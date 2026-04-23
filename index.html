@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technologieführerschaft — Schrack Seconet Gesamt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #E2001A;
+  --red-dark: #b5001b;
+  --red-light: #fde8eb;
+  --navy: #00264D;
+  --navy-mid: #003770;
+  --navy-light: #e6edf5;
+  --ink: #111827;
+  --ink-mid: #4B5563;
+  --ink-light: #9CA3AF;
+  --surface: #F8F9FA;
+  --surface2: #ECEEF0;
+  --border: rgba(0,38,77,0.08);
+  --border-strong: rgba(0,38,77,0.18);
+  --white: #ffffff;
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: var(--surface); color: var(--ink); line-height: 1.6; min-height: 100vh; }
+
+/* PAGE HEADER */
+.page-header { background: var(--navy); color: white; padding: 1.25rem 3rem 1.5rem; position: relative; overflow: hidden; }
+.ph-redbar { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--red); z-index: 2; }
+.ph-deco1 { position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; border-radius: 50%; background: var(--red); opacity: 0.08; pointer-events: none; }
+.ph-deco2 { position: absolute; bottom: -80px; left: 35%; width: 200px; height: 200px; border-radius: 50%; background: white; opacity: 0.03; pointer-events: none; }
+.header-inner { max-width: 1020px; margin: 0 auto; position: relative; }
+.header-top-row { display: flex; align-items: center; gap: 1.5rem; margin-bottom: .75rem; }
+.header-title { font-size: 1.65rem; font-weight: 700; line-height: 1.15; color: white; margin-bottom: .75rem; font-family: 'Inter Tight', sans-serif; letter-spacing: -.5px; }
+.header-title em { font-style: italic; font-weight: 300; color: rgba(255,255,255,0.55); }
+.header-bottom-row { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+.header-sub { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; flex: 1; min-width: 200px; }
+.header-stats { display: flex; gap: 0; flex-shrink: 0; }
+.stat-item { padding: 0 1.25rem 0 0; border-right: 1px solid rgba(255,255,255,0.1); margin-right: 1.25rem; }
+.stat-item:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+.stat-num { font-family: 'Inter Tight', sans-serif; font-size: 1.2rem; font-weight: 700; color: white; letter-spacing: -.5px; }
+.stat-label { font-size: 10px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 1px; margin-top: 1px; }
+
+/* SCOPE BANNER */
+.scope-banner { background: var(--navy-mid); color: white; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.scope-inner { max-width: 1020px; margin: 0 auto; padding: .45rem 3rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.scope-label { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; opacity: .5; }
+.scope-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+.scope-pill { font-size: 11px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); padding: 2px 9px; border-radius: 20px; white-space: nowrap; }
+
+/* LAYOUT */
+.main { max-width: 1020px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+
+/* TABS */
+.tabs { display: flex; gap: 4px; margin-bottom: 2rem; background: var(--surface2); padding: 4px; border-radius: var(--radius); border: 1px solid var(--border); width: fit-content; flex-wrap: wrap; }
+.tab { padding: 8px 18px; border-radius: 8px; border: none; background: transparent; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: var(--ink-light); cursor: pointer; transition: all .18s; white-space: nowrap; }
+.tab:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
+.tab.active { background: var(--white); color: var(--navy); font-weight: 600; box-shadow: 0 1px 4px rgba(0,38,77,0.12); border-bottom: 2px solid var(--red); }
+
+/* VIEWS */
+.view { display: none; animation: fadeIn .2s ease; }
+.view.active { display: block; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(4px); } to { opacity:1; transform:translateY(0); } }
+
+/* SECTION LABELS */
+.section-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--navy); opacity: .5; margin-bottom: 1.25rem; }
+
+/* RADAR */
+.radar-layout { display: grid; grid-template-columns: 380px 1fr; gap: 2rem; align-items: start; }
+@media(max-width:720px){ .radar-layout { grid-template-columns: 1fr; } }
+.radar-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; }
+.radar-card svg { width: 100%; }
+.legend { display: flex; flex-direction: column; gap: 6px; }
+.legend-row { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: var(--radius); border: 1px solid transparent; cursor: pointer; transition: all .15s; }
+.legend-row:hover { background: var(--surface2); border-color: var(--border); }
+.legend-row.sel { background: var(--white); border-color: var(--border-strong); box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.legend-info { flex: 1; }
+.legend-name { font-size: 13px; font-weight: 500; color: var(--ink); }
+.legend-sub { font-size: 11px; color: var(--ink-light); margin-top: 1px; }
+.legend-score { font-family: 'Inter Tight', sans-serif; font-size: 12px; color: var(--ink-light); }
+
+/* DETAIL */
+.detail-wrap { margin-top: 1.5rem; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; animation: fadeIn .2s ease; }
+.detail-bar { height: 4px; }
+.detail-body { padding: 1.5rem; }
+.detail-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+.detail-title { font-size: 16px; font-weight: 700; font-family: 'Inter Tight', sans-serif; }
+.detail-badge { font-family: 'Inter Tight', sans-serif; font-size: 11px; padding: 3px 10px; border-radius: 6px; background: var(--surface2); color: var(--ink-mid); white-space: nowrap; }
+.detail-scope { font-size: 11px; color: var(--ink-light); margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+.detail-scope strong { color: var(--ink-mid); font-weight: 500; }
+.detail-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+@media(max-width:600px){ .detail-cols { grid-template-columns: 1fr; } }
+.col-title { font-size: 10px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: var(--ink-light); margin-bottom: 8px; }
+.item-list { list-style: none; }
+.item-list li { font-size: 13px; color: var(--ink); padding: 5px 0 5px 16px; position: relative; border-bottom: 1px solid var(--border); line-height: 1.5; }
+.item-list li:last-child { border-bottom: none; }
+.item-list li::before { content: ''; position: absolute; left: 0; top: 13px; width: 6px; height: 6px; border-radius: 50%; }
+.strength-list li::before { background: #27ae60; opacity: .55; }
+.gap-list li::before { background: var(--red); opacity: .55; }
+.slider-row { display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--surface2); border-radius: var(--radius); }
+.slider-row label { font-size: 12px; color: var(--ink-light); white-space: nowrap; }
+.slider-row input[type=range] { flex: 1; accent-color: var(--red); }
+.slider-val { font-family: 'Inter Tight', sans-serif; font-size: 12px; font-weight: 500; color: var(--ink); min-width: 110px; }
+
+/* MATRIX */
+.matrix-intro { font-size: 14px; color: var(--ink-mid); margin-bottom: 1.5rem; max-width: 640px; line-height: 1.7; }
+.matrix-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+.matrix-table { width: 100%; border-collapse: collapse; }
+.matrix-table th { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--navy); opacity: .6; padding: 11px 14px; background: var(--navy-light); border-bottom: 1px solid rgba(0,38,77,0.1); text-align: left; }
+.matrix-table td { padding: 13px 14px; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--ink); vertical-align: top; line-height: 1.55; }
+.matrix-table tr:last-child td { border-bottom: none; }
+.matrix-table tr:hover td { background: var(--surface); }
+.dim-label { font-weight: 500; font-size: 13px; margin-bottom: 2px; }
+.dim-sub-label { font-size: 11px; color: var(--ink-light); font-family: 'Inter Tight', sans-serif; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 500; }
+.badge-h { background: var(--navy-light); color: var(--navy); font-weight: 600; }
+.badge-m { background: #fff3e0; color: #b45309; font-weight: 600; }
+
+/* ROADMAP */
+.roadmap { display: flex; flex-direction: column; gap: 1.25rem; }
+.phase-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+.phase-head { display: flex; align-items: center; gap: 14px; padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+.phase-num { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; color: white; }
+.phase-meta { flex: 1; }
+.phase-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 2px; font-family: 'Inter Tight', sans-serif; }
+.phase-title-text { font-size: 15px; font-weight: 600; color: var(--navy); font-family: 'Inter Tight', sans-serif; }
+.phase-period { font-family: 'Inter Tight', sans-serif; font-size: 11px; color: var(--ink-light); }
+.phase-body { padding: 1rem 1.5rem; display: flex; flex-direction: column; gap: 8px; }
+.initiative { display: flex; gap: 12px; padding: 10px 12px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); }
+.init-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+.init-title { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+.init-desc { font-size: 12px; color: var(--ink-light); line-height: 1.55; }
+.init-scope { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: .8px; text-transform: uppercase; margin-right: 6px; }
+
+/* PRINCIPLES */
+.principles-intro { font-size: 14px; color: var(--ink-mid); margin-bottom: 1.5rem; max-width: 600px; line-height: 1.7; }
+.principles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1rem; }
+.principle-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; transition: box-shadow .2s, transform .2s; border-top: 3px solid var(--red); }
+.principle-card:hover { box-shadow: 0 4px 20px rgba(0,38,77,0.08); transform: translateY(-1px); }
+.principle-num { font-family: 'Inter Tight', sans-serif; font-size: 11px; color: var(--red); font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
+.principle-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+.principle-text { font-size: 13px; color: var(--ink-mid); line-height: 1.65; }
+
+/* COMPARISON */
+.compare-intro { font-size: 14px; color: var(--ink-mid); margin-bottom: 1.5rem; max-width: 620px; line-height: 1.7; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
+@media(max-width:600px){ .compare-grid { grid-template-columns: 1fr; } }
+.compare-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+.compare-head { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); }
+.compare-head-title { font-size: 14px; font-weight: 700; color: var(--navy); }
+.compare-head-sub { font-size: 12px; color: var(--ink-light); margin-top: 2px; }
+.compare-body { padding: 1rem 1.25rem; }
+.compare-row { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+.compare-row:last-child { border-bottom: none; }
+.compare-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+.compare-note { color: var(--ink); line-height: 1.5; }
+.shared-banner { background: var(--navy-light); border: 1px solid rgba(0,38,77,0.12); border-radius: var(--radius-lg); padding: 1rem 1.25rem; }
+.shared-title { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--navy); margin-bottom: 10px; }
+.shared-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.shared-pill { font-size: 12px; background: var(--white); border: 1px solid var(--border-strong); padding: 4px 12px; border-radius: 20px; color: var(--ink-mid); }
+
+/* TIO */
+.tio-intro { margin-bottom: 1.5rem; }
+.tio-name-block { background: var(--navy); color: white; border-radius: var(--radius-lg); padding: 2rem 2.5rem; display: flex; flex-direction: column; gap: 8px; border-left: 5px solid var(--red); }
+.tio-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.tio-name { font-size: 2rem; font-weight: 700; color: white; line-height: 1.1; font-family: 'Inter Tight', sans-serif; letter-spacing: -.5px; }
+.tio-abbr { display: inline-block; font-family: 'Inter Tight', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; background: rgba(226,0,26,0.25); color: #ff8a96; padding: 3px 10px; border-radius: 4px; width: fit-content; margin-top: 4px; }
+.tio-name-rationale { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 600px; margin-top: 8px; }
+.orga-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 2rem; }
+.tio-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+@media(max-width:680px){ .tio-two-col { grid-template-columns: 1fr; } }
+.mission-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; position: relative; }
+.mission-quote { font-size: 4rem; line-height: 1; color: var(--red); opacity: .2; font-family: Georgia, serif; position: absolute; top: .5rem; left: 1.25rem; }
+.mission-text { font-size: 14px; color: var(--ink); line-height: 1.75; padding-left: .5rem; }
+.mission-bottom { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-light); }
+.roles-list { display: flex; flex-direction: column; gap: 8px; }
+.role-item { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1rem 1.25rem; border-left: 3px solid var(--red); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }
+.role-title { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.role-desc { font-size: 12px; color: var(--ink-mid); line-height: 1.6; }
+.role-scope { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+
+
+
+/* Persistence bar */
+.persist-bar { position:sticky; top:0; z-index:100; background:var(--navy); display:flex; align-items:center; gap:1rem; padding:.5rem 2rem; border-bottom:2px solid var(--red); }
+.persist-status { font-size:12px; color:rgba(255,255,255,.5); flex:1; font-family:'Inter',sans-serif; }
+.persist-status.saved { color:rgba(100,220,130,.8); }
+.persist-status.unsaved { color:rgba(255,180,60,.85); }
+.persist-btn { padding:5px 14px; border-radius:var(--radius); border:none; font-family:'Inter',sans-serif; font-size:12px; font-weight:600; cursor:pointer; transition:all .15s; white-space:nowrap; }
+.persist-btn.save { background:var(--red); color:white; }
+.persist-btn.save:hover { background:var(--red-dark); }
+.persist-btn.reset { background:rgba(255,255,255,.08); color:rgba(255,255,255,.6); }
+.persist-btn.reset:hover { background:rgba(255,255,255,.15); color:white; }
+.persist-btn.export { background:rgba(255,255,255,.08); color:rgba(255,255,255,.6); }
+.persist-btn.export:hover { background:rgba(255,255,255,.15); color:white; }
+.persist-saved-at { font-size:11px; color:rgba(255,255,255,.3); font-family:'Inter Tight',sans-serif; }
+
+/* KPI Ist-Stand */
+.kpi-card-ist { margin-top:10px; padding-top:10px; border-top:1px solid var(--border); }
+.kpi-ist-row { display:flex; align-items:center; gap:8px; }
+.kpi-ist-label { font-size:11px; color:var(--ink-light); white-space:nowrap; }
+.kpi-ist-input { flex:1; font-family:'Inter',sans-serif; font-size:13px; font-weight:500; padding:4px 8px; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface); color:var(--ink); outline:none; min-width:0; }
+.kpi-ist-input:focus { border-color:var(--navy); background:var(--white); }
+.kpi-delta { font-size:12px; font-weight:600; font-family:'Inter Tight',sans-serif; white-space:nowrap; padding:3px 8px; border-radius:20px; }
+.kpi-delta.ok  { background:rgba(39,174,96,.12); color:#1a7a40; }
+.kpi-delta.warn{ background:rgba(226,0,26,.1);  color:var(--red); }
+.kpi-delta.neu { background:var(--surface2); color:var(--ink-light); }
+.kpi-table td input.kpi-tbl-ist { width:90px; font-family:'Inter',sans-serif; font-size:12px; padding:3px 7px; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface); color:var(--ink); outline:none; }
+.kpi-table td input.kpi-tbl-ist:focus { border-color:var(--navy); }
+.delta-cell { font-size:11px; font-weight:600; font-family:'Inter Tight',sans-serif; padding:2px 7px; border-radius:20px; display:inline-block; }
+.delta-cell.ok  { background:rgba(39,174,96,.12); color:#1a7a40; }
+.delta-cell.warn{ background:rgba(226,0,26,.1);  color:var(--red); }
+.delta-cell.neu { background:var(--surface2); color:var(--ink-light); }
+
+/* CRUD editing */
+.crud-list { list-style:none; margin-bottom:8px; }
+.crud-item { display:flex; align-items:center; gap:8px; padding:5px 0 5px 0; border-bottom:1px solid var(--border); }
+.crud-item:last-child { border-bottom:none; }
+.crud-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+.crud-text { font-size:13px; color:var(--ink); flex:1; line-height:1.45; }
+.crud-btn { border:none; background:transparent; cursor:pointer; padding:2px 5px; border-radius:4px; font-size:13px; color:var(--ink-light); transition:all .15s; flex-shrink:0; }
+.crud-btn:hover { background:var(--surface2); color:var(--ink); }
+.crud-btn.del:hover { background:#fde8eb; color:var(--red); }
+.crud-add-row { display:flex; gap:6px; margin-top:8px; }
+.crud-add-row input { flex:1; font-family:'Inter',sans-serif; font-size:13px; padding:6px 10px; border:1px solid var(--border); border-radius:var(--radius); background:var(--white); color:var(--ink); outline:none; transition:border-color .15s; }
+.crud-add-row input:focus { border-color:var(--navy); }
+.crud-add-row input::placeholder { color:var(--ink-light); }
+.crud-add-btn { padding:6px 14px; border:none; border-radius:var(--radius); font-family:'Inter',sans-serif; font-size:12px; font-weight:600; cursor:pointer; white-space:nowrap; transition:all .15s; }
+.crud-add-btn.str { background:rgba(39,174,96,.12); color:#1a7a40; }
+.crud-add-btn.str:hover { background:rgba(39,174,96,.22); }
+.crud-add-btn.gap { background:rgba(226,0,26,.1); color:var(--red); }
+.crud-add-btn.gap:hover { background:rgba(226,0,26,.18); }
+.edit-inline { display:none; width:100%; font-family:'Inter',sans-serif; font-size:13px; padding:4px 8px; border:1px solid var(--navy); border-radius:var(--radius); background:var(--white); color:var(--ink); outline:none; }
+.crud-item.editing .crud-text { display:none; }
+.crud-item.editing .edit-inline { display:block; }
+.crud-item.editing .edit-btn { display:none; }
+.crud-item.editing .save-btn { display:inline-block !important; }
+.save-btn { display:none; }
+.col-edit-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+
+/* KPI */
+.kpi-intro-row { display:flex; align-items:flex-start; justify-content:space-between; gap:1.5rem; margin-bottom:1.75rem; flex-wrap:wrap; }
+.kpi-intro-text { font-size:14px; color:var(--ink-mid); line-height:1.7; max-width:580px; }
+.kpi-intro-text strong { color:var(--navy); font-weight:600; }
+.kpi-legend { display:flex; align-items:center; gap:10px; flex-shrink:0; padding-top:4px; }
+.kpi-leg-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.kpi-leg-label { font-size:12px; color:var(--ink-mid); margin-right:8px; }
+.kpi-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1rem; margin-bottom:2rem; }
+.kpi-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.25rem; border-top:3px solid; transition:box-shadow .2s; }
+.kpi-card:hover { box-shadow:0 4px 16px rgba(0,38,77,0.07); }
+.kpi-card-level { font-size:10px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; margin-bottom:6px; }
+.kpi-card-name { font-size:14px; font-weight:700; color:var(--navy); font-family:'Inter Tight',sans-serif; margin-bottom:6px; line-height:1.3; }
+.kpi-card-desc { font-size:12px; color:var(--ink-mid); line-height:1.6; margin-bottom:12px; }
+.kpi-card-footer { display:flex; align-items:center; justify-content:space-between; padding-top:10px; border-top:1px solid var(--border); }
+.kpi-target { font-family:'Inter Tight',sans-serif; font-size:13px; font-weight:700; }
+.kpi-freq { font-size:11px; color:var(--ink-light); background:var(--surface2); padding:2px 8px; border-radius:20px; }
+.kpi-table-wrap { margin-top:.5rem; }
+.kpi-table-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; }
+.kpi-table { width:100%; border-collapse:collapse; }
+.kpi-table th { font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--navy); opacity:.6; padding:10px 14px; background:var(--navy-light); border-bottom:1px solid rgba(0,38,77,0.1); text-align:left; }
+.kpi-table td { padding:11px 14px; border-bottom:1px solid var(--border); font-size:13px; color:var(--ink); vertical-align:top; line-height:1.5; }
+.kpi-table tr:last-child td { border-bottom:none; }
+.kpi-table tr:hover td { background:var(--surface); }
+.kpi-level-badge { display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:600; white-space:nowrap; }
+.kpi-level-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+.kpi-target-cell { font-family:'Inter Tight',sans-serif; font-weight:700; font-size:13px; white-space:nowrap; }
+
+/* FOOTER */
+.page-footer { max-width: 1020px; margin: 0 auto; padding: 0 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; border-top: 1px solid var(--border); padding-top: 1.5rem; }
+.footer-brand { font-size: 12px; color: var(--ink-light); }
+.footer-brand strong { color: var(--navy); font-weight: 700; font-family: 'Inter Tight', sans-serif; letter-spacing: -.2px; }
+.footer-date { font-family: 'Inter Tight', sans-serif; font-size: 11px; color: var(--ink-light); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<div class="persist-bar" id="persist-bar"><span class="persist-status" id="persist-status">Nicht gespeichert</span><span class="persist-saved-at" id="persist-saved-at"></span><button class="persist-btn export" onclick="exportData()">Export JSON</button><button class="persist-btn reset" onclick="resetData()">Zurücksetzen</button><button class="persist-btn save" onclick="saveData()">💾 Speichern</button></div>
+<div class="page-header">
+  <div class="ph-redbar"></div>
+  <div class="ph-deco1"></div><div class="ph-deco2"></div>
+  <div class="header-inner">
+    <div class="header-top-row">
+      <!-- Wordmark -->
+      <svg viewBox="0 0 220 24" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;flex-shrink:0">
+        <rect width="5" height="24" fill="#E2001A"/>
+        <text x="11" y="17" font-family="Inter Tight,sans-serif" font-size="14" font-weight="700" fill="white" letter-spacing=".5">SCHRACK</text>
+        <text x="107" y="17" font-family="Inter Tight,sans-serif" font-size="14" font-weight="300" fill="rgba(255,255,255,0.55)" letter-spacing=".5">SECONET</text>
+      </svg>
+      <span class="eyebrow-scope" style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.35)">Gesamtorganisation · Strategisches Führungsmodell</span>
+      <!-- TIO Logo Variante A — Radar Pulse, right-aligned -->
+      <div style="margin-left:auto;flex-shrink:0;display:flex;align-items:center;gap:10px;opacity:.85">
+        <svg viewBox="0 0 200 72" width="160" height="58" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="36" r="28" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="0.75"/>
+          <circle cx="32" cy="36" r="18" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="0.75"/>
+          <circle cx="32" cy="36" r="9"  fill="none" stroke="rgba(255,255,255,.2)" stroke-width="0.75"/>
+          <line x1="32" y1="36" x2="32" y2="9" stroke="#E2001A" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="32" y1="36" x2="50" y2="20" stroke="#E2001A" stroke-width="0.75" opacity=".45" stroke-linecap="round"/>
+          <circle cx="32" cy="9" r="3" fill="#E2001A"/>
+          <circle cx="50" cy="20" r="2" fill="#E2001A" opacity=".5"/>
+          <rect x="4" y="25" width="3" height="22" fill="#E2001A"/>
+          <rect x="68" y="25" width="1.5" height="22" fill="rgba(255,255,255,.2)"/>
+          <text x="76" y="33" font-family="Inter Tight,sans-serif" font-size="13" font-weight="700" fill="white" letter-spacing=".5">TIO</text>
+          <text x="76" y="47" font-family="Inter,sans-serif" font-size="7.5" font-weight="400" fill="rgba(255,255,255,.5)" letter-spacing="1.1">TECHNOLOGY &amp; INNOVATION</text>
+          <text x="76" y="57" font-family="Inter,sans-serif" font-size="7.5" font-weight="400" fill="rgba(255,255,255,.3)" letter-spacing="1.1">OFFICE · SCHRACK SECONET</text>
+        </svg>
+      </div>
+    </div>
+    <h1 class="header-title">Technologieführerschaft <em>2027–2032</em></h1>
+    <div class="header-bottom-row">
+      <p class="header-sub">Neue Technologien systematisch bewerten, integrieren und strukturellen Wettbewerbsvorsprung aufbauen.</p>
+      <div class="header-stats">
+        <div class="stat-item"><div class="stat-num">10</div><div class="stat-label">Dimensionen</div></div>
+        <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Phasen</div></div>
+        <div class="stat-item"><div class="stat-num">15</div><div class="stat-label">KPIs</div></div>
+        <div class="stat-item"><div class="stat-num">7</div><div class="stat-label">Prinzipien</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="scope-banner">
+  <div class="scope-inner">
+    <span class="scope-label">Scope</span>
+    <div class="scope-pills">
+      <span class="scope-pill">Produkte & Hardware</span>
+      <span class="scope-pill">Digitale Applikationen</span>
+      <span class="scope-pill">Service & Inbetriebnahme</span>
+      <span class="scope-pill">Vertrieb & Markt</span>
+      <span class="scope-pill">Securitas Gruppe</span>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="tabs">
+    <button class="tab active" onclick="showView('radar',event)">Radar & Bewertung</button>
+    <button class="tab" onclick="showView('matrix',event)">Bewertungsraster</button>
+    <button class="tab" onclick="showView('roadmap',event)">Initiativen-Roadmap</button>
+    <button class="tab" onclick="showView('compare',event)">Gesamt vs. DA</button>
+    <button class="tab" onclick="showView('principles',event)">Führungsprinzipien</button>
+    <button class="tab" onclick="showView('tio',event)">Technology &amp; Innovation Office</button>
+    <button class="tab" onclick="showView('kpi',event)">TIO · KPI-Set</button>
+  </div>
+
+  <!-- RADAR -->
+  <div id="view-radar" class="view active">
+    <div class="radar-layout">
+      <div>
+        <div class="radar-card">
+          <svg id="radar-svg" viewBox="0 0 340 320"></svg>
+        </div>
+      </div>
+      <div>
+        <div class="section-label">Dimensionen Gesamtorganisation</div>
+        <div class="legend" id="legend"></div>
+      </div>
+    </div>
+    <div id="detail-slot"></div>
+  </div>
+
+  <!-- MATRIX -->
+  <div id="view-matrix" class="view">
+    <p class="matrix-intro">Jede neue Technologie — ob für Produkte, Service, Vertrieb oder interne Prozesse — wird gegen diese sechs Kriterien bewertet, bevor eine Einführungs- oder Investitionsentscheidung getroffen wird. Das Raster gilt unternehmensübergreifend.</p>
+    <div class="matrix-card">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th style="width:17%">Kriterium</th>
+            <th style="width:21%">Leitfrage</th>
+            <th style="width:19%">Produktrelevanz</th>
+            <th style="width:19%">Prozessrelevanz</th>
+            <th style="width:14%">Marktrelevanz</th>
+            <th style="width:10%">Gewicht</th>
+          </tr>
+        </thead>
+        <tbody id="matrix-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ROADMAP -->
+  <div id="view-roadmap" class="view">
+    <div class="roadmap" id="roadmap"></div>
+  </div>
+
+  <!-- COMPARE -->
+  <div id="view-compare" class="view">
+    <p class="compare-intro">Die DA-Version fokussiert auf Softwareentwicklung und digitale Produkte. Die Gesamtversion erweitert den Blick auf Hardware, Markt, Gruppe und physische Serviceprozesse — und fügt zwei neue Dimensionen hinzu.</p>
+    <div class="compare-grid" id="compare-grid"></div>
+    <div class="shared-banner">
+      <div class="shared-title">Gemeinsame Fundamente (beide Versionen)</div>
+      <div class="shared-pills" id="shared-pills"></div>
+    </div>
+  </div>
+
+  <!-- PRINCIPLES -->
+  <div id="view-principles" class="view">
+    <p class="principles-intro">Sieben Führungsprinzipien, die als Entscheidungsfilter dienen — für alle Bereiche der Organisation gleichermaßen verbindlich.</p>
+    <div class="principles-grid" id="principles"></div>
+  </div>
+
+  <!-- TIO -->
+  <div id="view-tio" class="view">
+    <div class="tio-intro">
+      <div class="tio-name-block">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;flex-wrap:wrap">
+          <div>
+            <div class="tio-eyebrow">Organisationseinheit · Namensvorschlag</div>
+            <div class="tio-name">Technology &amp; Innovation Office</div>
+            <div class="tio-abbr">TIO</div>
+            <p class="tio-name-rationale">"Technology" benennt den Kernauftrag direkt. "Innovation" signalisiert den strategischen Anspruch nach außen. "Office" positioniert die Einheit als Querschnitts- und Koordinierungsfunktion mit Autorität — ohne eine große Linienorganisation zu implizieren.</p>
+          </div>
+          <svg viewBox="0 0 200 80" width="180" height="72" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;opacity:.9">
+            <circle cx="32" cy="40" r="28" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="0.75"/>
+            <circle cx="32" cy="40" r="18" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="0.75"/>
+            <circle cx="32" cy="40" r="9"  fill="none" stroke="rgba(255,255,255,.2)" stroke-width="0.75"/>
+            <line x1="32" y1="40" x2="32" y2="13" stroke="#E2001A" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="32" y1="40" x2="50" y2="24" stroke="#E2001A" stroke-width="0.75" opacity=".45" stroke-linecap="round"/>
+            <circle cx="32" cy="13" r="3" fill="#E2001A"/>
+            <circle cx="50" cy="24" r="2" fill="#E2001A" opacity=".5"/>
+            <rect x="4" y="29" width="3" height="22" fill="#E2001A"/>
+            <rect x="68" y="29" width="1.5" height="22" fill="rgba(255,255,255,.2)"/>
+            <text x="76" y="37" font-family="Inter Tight,sans-serif" font-size="14" font-weight="700" fill="white" letter-spacing=".5">TIO</text>
+            <text x="76" y="51" font-family="Inter,sans-serif" font-size="8" font-weight="400" fill="rgba(255,255,255,.5)" letter-spacing="1.2">TECHNOLOGY &amp; INNOVATION</text>
+            <text x="76" y="61" font-family="Inter,sans-serif" font-size="8" font-weight="400" fill="rgba(255,255,255,.3)" letter-spacing="1.2">OFFICE · SCHRACK SECONET</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:2rem">Organigramm</div>
+    <div class="orga-card">
+      <svg viewBox="0 0 680 560" width="100%" style="display:block">
+
+        <rect x="40" y="20" width="186" height="54" rx="8" fill="#e8ecf0" stroke="rgba(0,0,0,0.1)" stroke-width="0.5"/>
+        <text x="133" y="43" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#1e3248">PM/KPZ</text>
+        <text x="133" y="58" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#1e3248">Fire Alarm &amp; Security</text>
+
+        <rect x="247" y="20" width="186" height="54" rx="8" fill="#e8ecf0" stroke="rgba(0,0,0,0.1)" stroke-width="0.5"/>
+        <text x="340" y="43" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#1e3248">PM/KPZ</text>
+        <text x="340" y="58" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#1e3248">Health Care</text>
+
+        <rect x="454" y="20" width="186" height="54" rx="8" fill="#e8ecf0" stroke="rgba(0,0,0,0.1)" stroke-width="0.5"/>
+        <text x="547" y="43" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#1e3248">Produktmanagement</text>
+        <text x="547" y="58" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#1e3248">International</text>
+
+        <line x1="133" y1="74" x2="133" y2="106" stroke="#AFA9EC" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="340" y1="74" x2="340" y2="106" stroke="#AFA9EC" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="547" y1="74" x2="547" y2="106" stroke="#AFA9EC" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="133" y1="106" x2="547" y2="106" stroke="#AFA9EC" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="340" y1="106" x2="340" y2="126" stroke="#AFA9EC" stroke-width="1.5" marker-end="url(#tio-arrow)"/>
+
+        <defs>
+          <marker id="tio-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </marker>
+          <marker id="tio-gray-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="#B4B2A9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </marker>
+        </defs>
+
+        <rect x="195" y="126" width="290" height="62" rx="10" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.5"/>
+        <text x="340" y="149" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#3C3489">Technology &amp; Innovation Office</text>
+        <text x="340" y="167" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#534AB7">TIO · Querschnittsfunktion · Schrack Seconet</text>
+
+        <line x1="270" y1="188" x2="160" y2="228" stroke="#534AB7" stroke-width="0.75" marker-end="url(#tio-arrow)"/>
+        <line x1="340" y1="188" x2="340" y2="228" stroke="#534AB7" stroke-width="0.75" marker-end="url(#tio-arrow)"/>
+        <line x1="410" y1="188" x2="520" y2="228" stroke="#534AB7" stroke-width="0.75" marker-end="url(#tio-arrow)"/>
+
+        <rect x="55" y="228" width="210" height="54" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.75"/>
+        <text x="160" y="251" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="#085041">Fire Alarm &amp; Security</text>
+        <text x="160" y="268" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#0F6E56">Primärer Fachbereich</text>
+
+        <rect x="235" y="228" width="210" height="54" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.75"/>
+        <text x="340" y="251" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="#085041">Health Care</text>
+        <text x="340" y="268" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#0F6E56">Primärer Fachbereich</text>
+
+        <rect x="415" y="228" width="210" height="54" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.75"/>
+        <text x="520" y="251" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="#0C447C">PM International</text>
+        <text x="520" y="268" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#185FA5">Koordinierende Rolle</text>
+
+        <line x1="340" y1="340" x2="340" y2="360" stroke="#D3D1C7" stroke-width="0.5"/>
+        <rect x="40" y="300" width="600" height="1" fill="#D3D1C7"/>
+        <text x="340" y="320" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="600" letter-spacing="1" fill="#888780">QUERSCHNITTS-ZUSAMMENARBEIT</text>
+
+        <line x1="130" y1="330" x2="130" y2="360" stroke="#B4B2A9" stroke-width="0.5" marker-end="url(#tio-gray-arrow)"/>
+        <line x1="263" y1="330" x2="263" y2="360" stroke="#B4B2A9" stroke-width="0.5" marker-end="url(#tio-gray-arrow)"/>
+        <line x1="396" y1="330" x2="396" y2="360" stroke="#B4B2A9" stroke-width="0.5" marker-end="url(#tio-gray-arrow)"/>
+        <line x1="550" y1="330" x2="550" y2="360" stroke="#B4B2A9" stroke-width="0.5" marker-end="url(#tio-gray-arrow)"/>
+
+        <rect x="55" y="360" width="150" height="48" rx="7" fill="#F1EFE8" stroke="rgba(0,0,0,0.08)" stroke-width="0.5"/>
+        <text x="130" y="380" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="500" fill="#2C2C2A">Marketing</text>
+        <text x="130" y="397" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#5F5E5A">Positionierung, USP</text>
+
+        <rect x="188" y="360" width="150" height="48" rx="7" fill="#F1EFE8" stroke="rgba(0,0,0,0.08)" stroke-width="0.5"/>
+        <text x="263" y="380" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="500" fill="#2C2C2A">Dokumentation</text>
+        <text x="263" y="397" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#5F5E5A">Tech-Content</text>
+
+        <rect x="321" y="360" width="150" height="48" rx="7" fill="#F1EFE8" stroke="rgba(0,0,0,0.08)" stroke-width="0.5"/>
+        <text x="396" y="380" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="500" fill="#2C2C2A">IT</text>
+        <text x="396" y="397" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#5F5E5A">Architektur, Plattform</text>
+
+        <rect x="475" y="360" width="150" height="48" rx="7" fill="#F1EFE8" stroke="rgba(0,0,0,0.08)" stroke-width="0.5"/>
+        <text x="550" y="380" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="500" fill="#2C2C2A">Vertrieb / QA</text>
+        <text x="550" y="397" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#5F5E5A">Weitere Bereiche</text>
+
+        <rect x="40" y="458" width="600" height="1" fill="#D3D1C7"/>
+        <text x="340" y="476" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="600" letter-spacing="1" fill="#888780">KERNAUFGABEN</text>
+
+        <rect x="50" y="488" width="180" height="50" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.75"/>
+        <text x="140" y="509" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="#3C3489">Tech Radar</text>
+        <text x="140" y="526" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#534AB7">Screening &amp; Bewertung</text>
+
+        <rect x="250" y="488" width="180" height="50" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.75"/>
+        <text x="340" y="509" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="#3C3489">PoC Management</text>
+        <text x="340" y="526" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#534AB7">Piloten &amp; Entscheidungen</text>
+
+        <rect x="450" y="488" width="180" height="50" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.75"/>
+        <text x="540" y="509" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="#3C3489">Innovation Coord.</text>
+        <text x="540" y="526" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#534AB7">Gruppe &amp; International</text>
+
+      </svg>
+    </div>
+
+    <div class="tio-two-col">
+      <div>
+        <div class="section-label" style="margin-bottom:1rem">Mission Statement</div>
+        <div class="mission-card">
+          <div class="mission-quote">"</div>
+          <p class="mission-text">The Technology &amp; Innovation Office enables Schrack Seconet to systematically identify, evaluate and integrate new technologies into products, services and processes — creating a structural competitive advantage that others cannot easily replicate.</p>
+          <p class="mission-text" style="margin-top:.75rem">We serve Fire Alarm &amp; Security and Health Care as our primary domains, act as a cross-functional enabler across the organisation, and coordinate innovation intelligence within the Securitas Group's international product management.</p>
+          <div class="mission-bottom">TIO · Technology &amp; Innovation Office · Schrack Seconet AG</div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label" style="margin-bottom:1rem">Rollenkonzept</div>
+        <div class="roles-list" id="roles-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI -->
+  <div id="view-kpi" class="view">
+    <div class="kpi-intro-row">
+      <div class="kpi-intro-text">
+        <p>Das KPI-Set misst den Erfolg des TIO auf drei Ebenen: <strong>Aktivität</strong> (tun wir das Richtige?), <strong>Wirkung</strong> (verändert es etwas?) und <strong>Ergebnis</strong> (zahlt es auf Technologieführerschaft ein?). Zielwerte sind für das Ende von Phase 1 gesetzt (2028).</p>
+      </div>
+      <div class="kpi-legend">
+        <span class="kpi-leg-dot" style="background:#00264D"></span><span class="kpi-leg-label">Aktivität</span>
+        <span class="kpi-leg-dot" style="background:#E2001A"></span><span class="kpi-leg-label">Wirkung</span>
+        <span class="kpi-leg-dot" style="background:#2E7D32"></span><span class="kpi-leg-label">Ergebnis</span>
+      </div>
+    </div>
+    <div class="kpi-grid" id="kpi-grid"></div>
+    <div class="kpi-table-wrap">
+      <div class="section-label" style="margin-bottom:1rem">Alle KPIs im Überblick</div>
+      <div class="kpi-table-card">
+        <table class="kpi-table">
+          <thead><tr>
+            <th>Ebene</th><th>KPI</th><th>Messgröße</th><th>Ziel 2028</th><th>Ist-Stand</th><th>Abweichung</th><th>Frequenz</th>
+          </tr></thead>
+          <tbody id="kpi-table-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <div class="footer-brand"><strong>Schrack Seconet AG</strong> · Strategisches Führungsmodell Technologieführerschaft</div>
+  <div class="footer-date" id="footer-date"></div>
+</div>
+
+<script>
+const DIMS = [
+  {name:'Strategie & Technologie-Radar',
+   sub:'Welche Technologien beobachten wir aktiv?',
+   scope:'Gesamtorganisation',
+   score:2, color:'#534AB7',
+   strengths:['Produktstrategie und Konvergenzdenken vorhanden','Marktbeobachtung in Teilen etabliert','Klare strategische Stoßrichtung UB A&S 2027–31'],
+   gaps:['Kein formaler unternehmensweiter Technologie-Radar','Bewertung noch projektgetrieben, kein Rhythmus','Frühwarnsystem für disruptive Marktveränderungen fehlt']},
+  {name:'Produkt- & Hardwareinnovation',
+   sub:'Wie schnell bringen wir neue Technologien ins Produkt?',
+   scope:'Produkte & Hardware',
+   score:3, color:'#C0392B',
+   strengths:['Tiefes Domänenwissen Brandmelde/BMS','Produktgenerationen mit klarer Roadmap','Normenkonforme Entwicklungsprozesse etabliert'],
+   gaps:['Hardwarezyklen zu lang für schnelle Technologieintegration','Trennung Hardware/Software verlangsamt digitale Innovation','Neue Sensorik/Edge-Technologien noch nicht systematisch evaluiert']},
+  {name:'Digitale Applikationen & Software',
+   sub:'Wie agil entwickeln und integrieren wir Software?',
+   scope:'Digitale Applikationen',
+   score:2, color:'#0F6E56',
+   strengths:['Agile Methoden (SAFe) etabliert','Plattformdenken vorhanden','Entwicklungsprozess strukturiert und dokumentiert'],
+   gaps:['Plattform noch kein Plug-in-fähiger Innovationskanal','KI-Integration noch im PoC-Stadium','PoC-Prozess nicht standardisiert','Human-AI Engineering erst als Idee vorhanden — kein operatives Programm']},
+  {name:'Service & Inbetriebnahme',
+   sub:'Nutzen Service-Prozesse neue Technologien?',
+   scope:'Service-Organisation',
+   score:2, color:'#185FA5',
+   strengths:['Breite Servicebasis als Datenpotenzial','Direkter Kundenzugang für Technologie-Feedback','Remote-Service als Wachstumsfeld erkannt'],
+   gaps:['Service-Prozesse noch wenig digitalisiert','KI-gestützte Diagnose und Predictive Maintenance fehlen','Rückkopplung Felddaten → Produktentwicklung nicht strukturiert']},
+  {name:'Daten & KI-Hebel',
+   sub:'Erschließen wir Lifecycle-Daten strategisch?',
+   scope:'Gesamtorganisation',
+   score:2, color:'#BA7517',
+   strengths:['Umfangreiche Felddaten aus installierter Basis','Lifecycle-Mehrwert als strategisches Ziel','KI-Assistenz im Roadmap-Horizont'],
+   gaps:['Durchgängige Datenarchitektur fehlt','Analytics über Gewerke und Länder nicht operativ','Datenpotenzial der Gruppe noch kaum erschlossen']},
+  {name:'Markt & Wettbewerbsfähigkeit',
+   sub:'Setzen neue Technologien Marktakzente?',
+   scope:'Vertrieb & Markt',
+   score:3, color:'#7B3F9E',
+   strengths:['Starke Marktposition DACH','Bekannter Markenname in Sicherheitstechnik','Technologie als USP im Vertrieb kommunizierbar'],
+   gaps:['Wettbewerber holen bei digitalen Services auf','Technologieführerschaft noch nicht als Marktversprechen positioniert','Eco-System-Partnerschaften für Technologie-Differenzierung fehlen']},
+  {name:'Gruppen-Synergie & Konvergenz',
+   sub:'Nutzen wir Securitas-Gruppe als Technologie-Hebel?',
+   scope:'Securitas Gruppe',
+   score:2, color:'#2E7D32',
+   strengths:['Peer-to-Peer Services zwischen Gesellschaften angedacht','Gemeinsame strategische Richtung vorhanden','Zugang zu Securitas-Technologieportfolio'],
+   gaps:['Technologie-Konvergenz Brandmelde/BMS/Security noch nicht operativ','Länderübergreifende Plattform-Nutzung minimal','Gruppenweiter Technologie-Radar fehlt']},
+  {name:'Normen & Sicherheitskonformität',
+   sub:'Ist Compliance ein früher Filter oder eine Bremse?',
+   scope:'Gesamtorganisation',
+   score:4, color:'#993C1D',
+   strengths:['Tiefes Normenwissen vorhanden (EN 54, VdS etc.)','Security by Design als Prinzip','Zertifizierungsprozesse etabliert'],
+   gaps:['Compliance-Prüfung kommt oft zu spät im Prozess','NIS2 als neue Variable noch nicht vollständig integriert','Automatisierter Normen-Scan im Bewertungsprozess fehlt']},
+  {name:'Förderungen & Förderprogramme',
+   sub:'Nutzen wir Förderinstrumente systematisch?',
+   scope:'Innovation & Finanzierung',
+   score:1, color:'#2E7D32',
+   strengths:['Grundsätzliches Bewusstsein für Förderkulisse vorhanden','Vereinzelte Projekte wurden gefördert'],
+   gaps:['Kein systematischer Überblick über relevante Programme (FFG, Horizon, aws, Digitalbonus AT)','Keine dedizierte Verantwortlichkeit für Förder-Scouting und Antragstellung','Förderlogik wird nicht standardmäßig in Projektplanung integriert','Erfahrung mit EU-Konsortialförderungen fehlt']},
+  {name:'Startup-Netzwerk & Ökosystem',
+   sub:'Nutzen wir externe Innovationsquellen?',
+   scope:'Ökosystem & Partnerschaften',
+   score:1, color:'#7B3F9E',
+   strengths:['Offenheit für externe Impulse vorhanden','Einzelne Hochschulkontakte bestehen'],
+   gaps:['Kein strukturierter Zugang zu Startup-Hubs oder Acceleratoren','Startup-Scouting nicht als Frühwarnsystem etabliert','Keine systematischen Hochschul- oder Forschungspartnerschaften','Startups werden nicht als PoC-Partner oder Förderpartner genutzt']}
+];
+
+const MATRIX = [
+  {dim:'Marktreife', sub:'Technology Readiness', q:'Im sicherheitskritischen Umfeld erprobt? Referenzen im Markt vorhanden?', prod:'Einsatz in Brandmelde-/BMS-Produkten realistisch und zertifizierbar?', proc:'Für Service und Inbetriebnahme stabil genug?', market:'Wettbewerber nutzen die Technologie bereits?', w:'Hoch'},
+  {dim:'Differenzierungspotenzial', sub:'Strategic Fit', q:'Vorteil, den Wettbewerber in 2–3 Jahren nicht einfach nachbauen?', prod:'Neue Produktfunktionen oder Geschäftsmodelle ermöglicht?', proc:'Prozesseffizienz strukturell hebend?', market:'Als USP im Vertrieb kommunizierbar?', w:'Hoch'},
+  {dim:'Integrationsfähigkeit', sub:'Interoperability', q:'Einbettung in bestehende Architektur und Plattform möglich?', prod:'Schnittstellen zu bestehenden Produkt-Ökosystemen?', proc:'Integration in DevOps- und Serviceprozesse?', market:'Kompatibel mit Partnerlösungen und Ökosystem?', w:'Mittel'},
+  {dim:'Normenkonformität', sub:'Compliance', q:'Normen (EN 54, NIS2, VdS) erfüllt oder erreichbar?', prod:'Für sicherheitsrelevante Produktbereiche zertifizierbar?', proc:'Datenschutz und Betriebssicherheit gewährleistet?', market:'Regulatorisch in allen Zielmärkten zugelassen?', w:'Hoch'},
+  {dim:'Organisations­fähigkeit', sub:'Absorptive Capacity', q:'Skills vorhanden, um die Technologie aufzunehmen und weiterzuentwickeln?', prod:'Produktteams können eigenständig betreiben?', proc:'Schulungsaufwand in Service-Organisation realistisch?', market:'Vertrieb kann Technologie verständlich erklären?', w:'Mittel'},
+  {dim:'Daten- & KI-Hebel', sub:'Data Leverage', q:'Erzeugt oder erschließt die Technologie Lifecycle-Daten für Wettbewerbsvorsprung?', prod:'Produktdaten für Analytics oder KI nutzbar?', proc:'Prozessdaten für kontinuierliche Verbesserung?', market:'Datenbasierte Services als neues Geschäftsmodell möglich?', w:'Mittel'}
+];
+
+const PHASES = [
+  {label:'Phase 1 · Bewertungsfähigkeit', title:'Technologien systematisch erkennen & selektieren', period:'2027–2028', color:'#185FA5', bg:'#185FA5',
+   items:[
+     {color:'#534AB7', scope:'Strategie', title:'Unternehmensweiten Technologie-Radar einführen', desc:'Quartalsweises Screening neuer Technologien über alle Bereiche — Produkt, Service, Digitales, Markt'},
+     {color:'#993C1D', scope:'Normen', title:'Compliance als frühen Filter verankern', desc:'Normenkonformität (EN 54, NIS2) als erstes Bewertungskriterium, nicht als nachgelagerte Prüfung'},
+     {color:'#0F6E56', scope:'DA', title:'PoC-Prozess unternehmensübergreifend standardisieren', desc:'Einheitlicher Rahmen: Ziel, Zeitbox, Abbruchkriterium, Entscheidung — für DA und Produkt gleichermaßen'},
+     {color:'#C0392B', scope:'Produkt', title:'Hardware-Software-Konvergenz-Roadmap erstellen', desc:'Technologiezyklen Produkt und Software synchronisieren, Edge/IoT-Integrationskanal definieren'},
+     {color:'#2E7D32', scope:'Förderung', title:'Förderprogramm-Management aufbauen', desc:'Systematische Übersicht relevanter Förderprogramme (FFG, Horizon Europe, aws, Digitalbonus AT) — mit klaren Verantwortlichkeiten, Fristen und Antragsprozessen'},
+     {color:'#7B3F9E', scope:'Ökosystem', title:'Startup-Netzwerk-Strategie definieren', desc:'Zugang zu relevanten Startup-Hubs, Acceleratoren und Hochschulen strukturieren — als Frühwarnsystem für disruptive Technologien und als PoC-Partnerpool'},
+     {color:'#0F6E56', scope:'Skills', title:'Human-AI Engineering Programm aufsetzen', desc:'Aus der Idee ein operatives Programm machen: Kompetenzrahmen definieren, Pilotteam identifizieren, erste Tools (Cursor, GitHub Copilot, Lovable) geordnet einführen und Erfahrungen systematisch dokumentieren'}
+   ]},
+  {label:'Phase 2 · Integrationsfähigkeit', title:'Neue Technologien in Produkte, Service & Markt bringen', period:'2028–2030', color:'#0F6E56', bg:'#0F6E56',
+   items:[
+     {color:'#BA7517', scope:'Daten', title:'Lifecycle-Datenarchitektur unternehmensübergreifend', desc:'Durchgängige Datenflüsse von Installation über Betrieb bis Service — als Grundlage für KI und neue Geschäftsmodelle'},
+     {color:'#185FA5', scope:'Service', title:'KI-gestützte Diagnose in Serviceprozesse integrieren', desc:'Predictive Maintenance, Ferndiagnose und KI-Assistenz als Standard im Service — nicht als Pilot'},
+     {color:'#7B3F9E', scope:'Markt', title:'Technologieführerschaft als Marktversprechen positionieren', desc:'Technologie-USP im Vertrieb verankern, Partnerökosystem für Differenzierung aufbauen'},
+     {color:'#2E7D32', scope:'Gruppe', title:'Gruppen-Technologieplattform aktivieren', desc:'Gemeinsame Dienste mit Securitas-Gesellschaften, länderübergreifende Technologie-Nutzung, Konvergenz Brandmelde/Security'},
+     {color:'#2E7D32', scope:'Förderung', title:'Förderungen aktiv in Projekte einbinden', desc:'FFG-, Horizon- und aws-Förderungen werden standardmäßig bei PoC- und Produktprojekten geprüft — TIO koordiniert Anträge und Reporting'},
+     {color:'#7B3F9E', scope:'Ökosystem', title:'Startup-Kooperationen operationalisieren', desc:'Erste strukturierte Pilotprojekte mit Startups aus dem Netzwerk — als Technologielieferanten, Validierungspartner oder gemeinsame Förderantragsteller'},
+     {color:'#0F6E56', scope:'Skills', title:'Human-AI Engineering skalieren', desc:'Programm auf gesamte DA-Organisation ausweiten: KI-nativer Entwicklungsprozess als Standard, messbare Produktivitätskennzahlen, Erfahrungen in Gruppe teilen'}
+   ]},
+  {label:'Phase 3 · Führerschaft', title:'Strukturellen Technologie-Vorsprung sichern', period:'2030–2032', color:'#BA7517', bg:'#BA7517',
+   items:[
+     {color:'#BA7517', scope:'Daten', title:'Datengetriebene Produktinnovation als Standard', desc:'Neue Produktgenerationen entstehen aus Lifecycle-Daten und KI-Erkenntnissen — nicht aus klassischen Spezifikationsprozessen'},
+     {color:'#534AB7', scope:'Strategie', title:'Technologie-Frühwarnsystem etabliert', desc:'Kontinuierliche Marktbeobachtung, Forschungspartnerschaften, Startup-Scouting, strukturierter Ökosystem-Austausch'},
+     {color:'#7B3F9E', scope:'Markt', title:'Neue Geschäftsmodelle aus Plattform- und Datenbasis', desc:'SaaS-Services, Subscription-Modelle, Analytics-as-a-Service auf Basis der Technologie- und Datenführerschaft'},
+     {color:'#2E7D32', scope:'Gruppe', title:'Schrack Seconet als Technologie-Anker der Securitas-Gruppe', desc:'Führende Technologieplattform, die anderen Gruppengesellschaften als Innovationsmotor dient'},
+     {color:'#2E7D32', scope:'Förderung', title:'Förderintelligenz als strategischer Vorteil', desc:'Eigenständige Förderstrategie: Schrack Seconet nutzt EU- und nationale Programme proaktiv zur Ko-Finanzierung von F&E — mit messbarem Anteil an Förderquote am Innovationsbudget'},
+     {color:'#7B3F9E', scope:'Ökosystem', title:'Innovationsökosystem als Dauerkanal', desc:'Startup-Netzwerk, Hochschulpartnerschaften und Accelerator-Präsenz sind institutionalisiert — als kontinuierlicher Frühwarnsensor und Technologiequelle'}
+   ]}
+];
+
+const COMPARE_DA = [
+  {t:'Technologie-Radar (DA)', n:'Bewertung neuer Technologien im Software-/DA-Bereich'},
+  {t:'Architektur & Plattformen', n:'Plattformfähigkeit für schnelle Software-Integration'},
+  {t:'Integration & Interoperabilität', n:'API-Strategie, Datenmodelle, gewerkeübergreifend'},
+  {t:'Daten & KI-Hebel', n:'Lifecycle-Daten für digitale Produkte und KI'},
+  {t:'Skills & Absorptionsfähigkeit', n:'KI- und Entwicklungskompetenz im DA-Team'},
+  {t:'Normen & Sicherheitskonformität', n:'Compliance als Filter für digitale Lösungen'}
+];
+const COMPARE_GESAMT = [
+  {t:'Strategie & Technologie-Radar', n:'Unternehmensweites Screening über alle Bereiche'},
+  {t:'Produkt- & Hardwareinnovation', n:'Neue Dimension: physische Produkte, Sensorik, Zyklen'},
+  {t:'Digitale Applikationen & Software', n:'Entspricht DA-Sicht, eingebettet in Gesamtbild'},
+  {t:'Service & Inbetriebnahme', n:'Neue Dimension: Technologie im Feld'},
+  {t:'Daten & KI-Hebel', n:'Erweitert: Feld, Gruppe, neue Geschäftsmodelle'},
+  {t:'Markt & Wettbewerbsfähigkeit', n:'Neue Dimension: Technologie als Marktversprechen'},
+  {t:'Gruppen-Synergie & Konvergenz', n:'Neue Dimension: Securitas-Gruppe als Hebel'},
+  {t:'Normen & Sicherheitskonformität', n:'Erweitert: alle Märkte, NIS2, VdS'}
+];
+const SHARED = ['Bewertungsraster (6 Kriterien)','PoC-Prozess mit Zeitbox','Daten als strategischer Kompass','Security by Design','Führungsprinzipien','Roadmap-Logik (3 Phasen)'];
+
+const PRINCIPLES = [
+  {n:'01', title:'Bewerten vor Einführen', text:'Keine Technologie ohne strukturierte Bewertung. Begeisterung ist kein Kriterium — Differenzierungspotenzial, Normkonformität und Integrationsfähigkeit sind es.'},
+  {n:'02', title:'Hardware und Software denken zusammen', text:'Technologieführerschaft entsteht nicht in einem Bereich allein. Produktzyklen, DA-Entwicklung und Serviceprozesse müssen Technologie-Entscheidungen synchronisiert treffen.'},
+  {n:'03', title:'PoC mit Verfallsdatum', text:'Jeder Proof-of-Concept braucht ein Ziel, eine Zeitbox und ein explizites Abbruchkriterium. Endlose Piloten binden Kapazität und verhindern echte Entscheidungen.'},
+  {n:'04', title:'Daten als langfristiger Kompass', text:'Technologien, die Lifecycle-Daten erzeugen oder erschließen, bekommen strategischen Vorrang. Wer die Daten aus der installierten Basis besitzt, besitzt langfristig den Vorsprung.'},
+  {n:'05', title:'Compliance ist ein früher Filter', text:'Normenkonformität (EN 54, NIS2, VdS) wird am Anfang der Technologiebewertung geprüft — nicht am Ende. Security by Design schützt, beschleunigt Zertifizierung und ermöglicht Skalierung.'},
+  {n:'06', title:'Gruppe als Technologie-Multiplikator', text:'Die Securitas-Gruppe ist kein organisatorischer Rahmen, sondern ein strategischer Technologie-Hebel. Was in einer Gesellschaft evaluiert wird, kann in zehn andere skaliert werden.'},
+  {n:'07', title:'Führerschaft = strukturell nicht nachbaubar', text:'Technologisch führend ist Schrack Seconet, wenn Produkte, Daten, Serviceprozesse und Skills so verzahnt sind, dass Wettbewerber uns strukturell nicht kopieren können — nicht weil wir die neuesten Tools nutzen.'}
+];
+
+const LABELS = ['Radar','Produkt','Digital','Service','Daten','Markt','Gruppe','Normen','Förderung','Startups'];
+const SCORE_LABELS = ['','Einstieg','Aufbau','Etabliert','Differenziert','Führend'];
+let selected = null;
+let scores = DIMS.map(d => d.score);
+
+function drawRadar(){
+  const svg = document.getElementById('radar-svg');
+  const cx=170, cy=158, r=128, n=DIMS.length;
+  let h = '';
+  for(let lv=1;lv<=5;lv++){
+    const pts=DIMS.map((_,i)=>{const a=Math.PI*2*i/n-Math.PI/2;const rr=r*lv/5;return`${cx+rr*Math.cos(a)},${cy+rr*Math.sin(a)}`;}).join(' ');
+    h+=`<polygon points="${pts}" fill="none" stroke="#e5e3df" stroke-width="${lv===5?1:0.5}"/>`;
+  }
+  for(let i=0;i<n;i++){
+    const a=Math.PI*2*i/n-Math.PI/2;
+    h+=`<line x1="${cx}" y1="${cy}" x2="${cx+r*Math.cos(a)}" y2="${cy+r*Math.sin(a)}" stroke="#e5e3df" stroke-width="0.5"/>`;
+  }
+  const pts=DIMS.map((d,i)=>{const a=Math.PI*2*i/n-Math.PI/2;const rr=r*scores[i]/5;return`${cx+rr*Math.cos(a)},${cy+rr*Math.sin(a)}`;}).join(' ');
+  const col=selected!==null?DIMS[selected].color:'#0D1B2A';
+  h+=`<polygon points="${pts}" fill="${col}" fill-opacity="0.09" stroke="${col}" stroke-width="1.5"/>`;
+  for(let i=0;i<n;i++){
+    const a=Math.PI*2*i/n-Math.PI/2;
+    const rr=r*scores[i]/5;
+    const x=cx+rr*Math.cos(a), y=cy+rr*Math.sin(a);
+    const isSel=selected===i;
+    h+=`<circle cx="${x}" cy="${y}" r="${isSel?7:5}" fill="${DIMS[i].color}" stroke="white" stroke-width="2" style="cursor:pointer" onclick="selectDim(${i})"/>`;
+    const lx=cx+(r+22)*Math.cos(a), ly=cy+(r+22)*Math.sin(a);
+    const anch=Math.cos(a)>0.1?'start':Math.cos(a)<-0.1?'end':'middle';
+    h+=`<text x="${lx}" y="${ly}" text-anchor="${anch}" dominant-baseline="central" font-family="Inter,sans-serif" font-size="10.5" fill="${isSel?DIMS[i].color:'#999'}" font-weight="${isSel?600:400}" style="cursor:pointer" onclick="selectDim(${i})">${LABELS[i]}</text>`;
+  }
+  const avg=(scores.reduce((a,b)=>a+b,0)/n).toFixed(1);
+  h+=`<text x="${cx}" y="${cy-11}" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#bbb">Ø</text>`;
+  h+=`<text x="${cx}" y="${cy+10}" text-anchor="middle" font-family="Inter Tight,sans-serif" font-size="22" font-weight="600" fill="#1a1a1a">${avg}</text>`;
+  h+=`<text x="${cx}" y="${cy+27}" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#bbb">von 5</text>`;
+  svg.innerHTML=h;
+}
+
+function drawLegend(){
+  document.getElementById('legend').innerHTML=DIMS.map((d,i)=>`
+    <div class="legend-row${selected===i?' sel':''}" onclick="selectDim(${i})">
+      <div class="legend-dot" style="background:${d.color}"></div>
+      <div class="legend-info">
+        <div class="legend-name">${d.name}</div>
+        <div class="legend-sub">${d.scope} · ${d.sub}</div>
+      </div>
+      <div class="legend-score">${scores[i]}/5</div>
+    </div>`).join('');
+}
+
+function crudItem(dimIdx, type, itemIdx) {
+  const d = DIMS[dimIdx];
+  const arr = type==='s' ? d.strengths : d.gaps;
+  const txt = arr[itemIdx];
+  const dotColor = type==='s' ? '#27ae60' : 'var(--red)';
+  return `<li class="crud-item" id="ci-${dimIdx}-${type}-${itemIdx}">
+    <span class="crud-dot" style="background:${dotColor}"></span>
+    <span class="crud-text">${txt}</span>
+    <input class="edit-inline" value="${txt.replace(/"/g,'&quot;')}" onkeydown="if(event.key==='Enter')saveItem(${dimIdx},'${type}',${itemIdx}); if(event.key==='Escape')cancelEdit(${dimIdx},'${type}',${itemIdx})">
+    <button class="crud-btn edit-btn" title="Bearbeiten" onclick="startEdit(${dimIdx},'${type}',${itemIdx})">✏️</button>
+    <button class="crud-btn save-btn" title="Speichern" onclick="saveItem(${dimIdx},'${type}',${itemIdx})">✓</button>
+    <button class="crud-btn del" title="Löschen" onclick="deleteItem(${dimIdx},'${type}',${itemIdx})">✕</button>
+  </li>`;
+}
+
+function renderCrudList(dimIdx, type) {
+  const arr = type==='s' ? DIMS[dimIdx].strengths : DIMS[dimIdx].gaps;
+  return arr.map((_,j) => crudItem(dimIdx, type, j)).join('');
+}
+
+function startEdit(dimIdx, type, itemIdx) {
+  const li = document.getElementById(`ci-${dimIdx}-${type}-${itemIdx}`);
+  li.classList.add('editing');
+  li.querySelector('.edit-inline').focus();
+}
+
+function cancelEdit(dimIdx, type, itemIdx) {
+  const li = document.getElementById(`ci-${dimIdx}-${type}-${itemIdx}`);
+  li.classList.remove('editing');
+}
+
+function saveItem(dimIdx, type, itemIdx) {
+  const li = document.getElementById(`ci-${dimIdx}-${type}-${itemIdx}`);
+  const val = li.querySelector('.edit-inline').value.trim();
+  if (!val) return;
+  const arr = type==='s' ? DIMS[dimIdx].strengths : DIMS[dimIdx].gaps;
+  arr[itemIdx] = val;
+  showDetail(dimIdx);
+}
+
+function deleteItem(dimIdx, type, itemIdx) {
+  const arr = type==='s' ? DIMS[dimIdx].strengths : DIMS[dimIdx].gaps;
+  arr.splice(itemIdx, 1);
+  showDetail(dimIdx);
+}
+
+function addItem(dimIdx, type) {
+  const inputId = `new-${dimIdx}-${type}`;
+  const val = document.getElementById(inputId).value.trim();
+  if (!val) return;
+  if (type==='s') DIMS[dimIdx].strengths.push(val);
+  else DIMS[dimIdx].gaps.push(val);
+  showDetail(dimIdx);
+}
+
+function showDetail(i){
+  const d=DIMS[i];
+  const slot=document.getElementById('detail-slot');
+  slot.innerHTML=`
+    <div class="detail-wrap">
+      <div class="detail-bar" style="background:${d.color}"></div>
+      <div class="detail-body">
+        <div class="detail-head">
+          <div class="detail-title" style="color:${d.color}">${d.name}</div>
+          <div class="detail-badge">${scores[i]}/5 · ${SCORE_LABELS[scores[i]]}</div>
+        </div>
+        <div class="detail-scope">Scope: <strong>${d.scope}</strong> &nbsp;·&nbsp; ${d.sub}</div>
+        <div class="detail-cols">
+          <div>
+            <div class="col-edit-header">
+              <div class="col-title" style="margin-bottom:0">Stärken heute</div>
+            </div>
+            <ul class="item-list strength-list crud-list">${renderCrudList(i,'s')}</ul>
+            <div class="crud-add-row">
+              <input id="new-${i}-s" type="text" placeholder="Neue Stärke hinzufügen…"
+                onkeydown="if(event.key==='Enter')addItem(${i},'s')">
+              <button class="crud-add-btn str" onclick="addItem(${i},'s')">+ Hinzufügen</button>
+            </div>
+          </div>
+          <div>
+            <div class="col-edit-header">
+              <div class="col-title" style="margin-bottom:0">Lücken / Handlungsbedarf</div>
+            </div>
+            <ul class="item-list gap-list crud-list">${renderCrudList(i,'g')}</ul>
+            <div class="crud-add-row">
+              <input id="new-${i}-g" type="text" placeholder="Neue Lücke hinzufügen…"
+                onkeydown="if(event.key==='Enter')addItem(${i},'g')">
+              <button class="crud-add-btn gap" onclick="addItem(${i},'g')">+ Hinzufügen</button>
+            </div>
+          </div>
+        </div>
+        <div class="slider-row">
+          <label>Meine Bewertung</label>
+          <input type="range" min="1" max="5" step="1" value="${scores[i]}" oninput="updateScore(${i},this.value)">
+          <span class="slider-val" id="sv${i}">${scores[i]}/5 · ${SCORE_LABELS[scores[i]]}</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+function selectDim(i){
+  selected=selected===i?null:i;
+  drawRadar(); drawLegend();
+  if(selected!==null) showDetail(selected);
+  else document.getElementById('detail-slot').innerHTML='';
+}
+
+function updateScore(i,v){
+  scores[i]=parseInt(v);
+  document.getElementById('sv'+i).textContent=`${v}/5 · ${SCORE_LABELS[parseInt(v)]}`;
+  drawRadar(); drawLegend();
+}
+
+function buildMatrix(){
+  document.getElementById('matrix-body').innerHTML=MATRIX.map(r=>`
+    <tr>
+      <td><div class="dim-label">${r.dim}</div><div class="dim-sub-label">${r.sub}</div></td>
+      <td>${r.q}</td><td>${r.prod}</td><td>${r.proc}</td><td>${r.market}</td>
+      <td><span class="badge ${r.w==='Hoch'?'badge-h':'badge-m'}">${r.w}</span></td>
+    </tr>`).join('');
+}
+
+function buildRoadmap(){
+  document.getElementById('roadmap').innerHTML=PHASES.map((p,idx)=>`
+    <div class="phase-card">
+      <div class="phase-head">
+        <div class="phase-num" style="background:${p.bg}">${idx+1}</div>
+        <div class="phase-meta">
+          <div class="phase-eyebrow" style="color:${p.color}">${p.label}</div>
+          <div class="phase-title-text">${p.title}</div>
+        </div>
+        <div class="phase-period">${p.period}</div>
+      </div>
+      <div class="phase-body">
+        ${p.items.map(it=>`
+          <div class="initiative">
+            <div class="init-dot" style="background:${it.color}"></div>
+            <div>
+              <div class="init-title"><span class="init-scope" style="color:${it.color}">${it.scope}</span>${it.title}</div>
+              <div class="init-desc">${it.desc}</div>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+function buildCompare(){
+  const da=COMPARE_DA.map(r=>`<div class="compare-row"><div class="compare-dot" style="background:#0F6E56"></div><div class="compare-note">${r.t}<br><span style="font-size:11px;color:var(--ink-light)">${r.n}</span></div></div>`).join('');
+  const gs=COMPARE_GESAMT.map(r=>`<div class="compare-row"><div class="compare-dot" style="background:#C0392B"></div><div class="compare-note">${r.t}<br><span style="font-size:11px;color:var(--ink-light)">${r.n}</span></div></div>`).join('');
+  document.getElementById('compare-grid').innerHTML=`
+    <div class="compare-card">
+      <div class="compare-head"><div class="compare-head-title" style="color:#0F6E56">DA-Version</div><div class="compare-head-sub">6 Dimensionen · Software & Digitales</div></div>
+      <div class="compare-body">${da}</div>
+    </div>
+    <div class="compare-card">
+      <div class="compare-head"><div class="compare-head-title" style="color:#C0392B">Gesamt-Version</div><div class="compare-head-sub">8 Dimensionen · Gesamtorganisation</div></div>
+      <div class="compare-body">${gs}</div>
+    </div>`;
+  document.getElementById('shared-pills').innerHTML=SHARED.map(s=>`<span class="shared-pill">${s}</span>`).join('');
+}
+
+function buildPrinciples(){
+  document.getElementById('principles').innerHTML=PRINCIPLES.map(p=>`
+    <div class="principle-card">
+      <div class="principle-num">${p.n}</div>
+      <div class="principle-title">${p.title}</div>
+      <div class="principle-text">${p.text}</div>
+    </div>`).join('');
+}
+
+function showView(id,e){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('view-'+id).classList.add('active');
+  e.target.classList.add('active');
+}
+
+document.getElementById('footer-date').textContent=new Date().toLocaleDateString('de-AT',{year:'numeric',month:'long',day:'numeric'});
+
+const ROLES = [
+  {scope:'Fachbereiche', title:'Domain Innovation Partner', desc:'Primärer Ansprechpartner für Fire Alarm & Security und Health Care: Technologiebewertung, PoC-Begleitung, Roadmap-Input.'},
+  {scope:'Gesamtorganisation', title:'Technology Radar Owner', desc:'Betreibt den unternehmensweiten Technologie-Radar: quartalsweises Screening, Bewertung nach Raster, Entscheidungsvorlagen.'},
+  {scope:'Gesamtorganisation', title:'PoC Process Steward', desc:'Definiert und überwacht den standardisierten PoC-Prozess: Ziel, Zeitbox, Abbruchkriterium, Übergabe an Linienbereiche.'},
+  {scope:'Securitas Gruppe', title:'Innovation Intelligence Coordinator', desc:'Koordiniert Technologie-Scouting und Innovation-Sharing innerhalb des PM International der Securitas Gruppe — ohne operative Linienfunktion.'},
+  {scope:'Querschnitt', title:'Cross-functional Enabler', desc:'Vernetzt Marketing (Tech-Positionierung), Dokumentation (Tech-Content), IT (Architektur-Alignment) und QA in technologierelevanten Fragen.'}
+];
+
+function buildRoles(){
+  document.getElementById('roles-list').innerHTML=ROLES.map(r=>`
+    <div class="role-item">
+      <div class="role-scope">${r.scope}</div>
+      <div class="role-title">${r.title}</div>
+      <div class="role-desc">${r.desc}</div>
+    </div>`).join('');
+}
+
+const KPIS = [
+  {level:'Aktivität', color:'#00264D', lcolor:'#00264D',
+   name:'Technologie-Radar Zyklen', desc:'Anzahl abgeschlossener quartalsweiser Technologie-Screenings mit dokumentierter Ausgabe pro Jahr.', measure:'Screenings / Jahr', target:'4 / Jahr', freq:'Quartalsweise'},
+  {level:'Aktivität', color:'#00264D', lcolor:'#00264D',
+   name:'Bewertete Technologien', desc:'Anzahl neuer Technologien, die vollständig nach dem 6-Kriterien-Raster bewertet und dokumentiert wurden.', measure:'Anzahl Bewertungen', target:'≥ 12 / Jahr', freq:'Quartalsweise'},
+  {level:'Aktivität', color:'#00264D', lcolor:'#00264D',
+   name:'Aktive PoC-Projekte', desc:'Anzahl laufender Proof-of-Concepts mit definiertem Ziel, Zeitbox und Abbruchkriterium — nach standardisiertem TIO-Prozess.', measure:'Anzahl PoCs aktiv', target:'3–6 parallel', freq:'Monatlich'},
+  {level:'Aktivität', color:'#00264D', lcolor:'#00264D',
+   name:'Förderanträge gestellt', desc:'Anzahl eingereichter Förderanträge (FFG, Horizon, aws, Digitalbonus AT) pro Jahr — unabhängig von Bewilligung.', measure:'Anträge / Jahr', target:'≥ 3 / Jahr', freq:'Jährlich'},
+  {level:'Aktivität', color:'#00264D', lcolor:'#00264D',
+   name:'Startup-Kontakte im Netzwerk', desc:'Anzahl aktiv gepflegter Startup- und Hochschulkontakte im TIO-Netzwerk mit mindestens einem Touchpoint pro Quartal.', measure:'Aktive Kontakte', target:'≥ 15', freq:'Quartalsweise'},
+  {level:'Wirkung', color:'#E2001A', lcolor:'#E2001A',
+   name:'PoC-Entscheidungsquote', desc:'Anteil abgeschlossener PoCs, bei denen innerhalb der Zeitbox eine klare Ja/Nein-Entscheidung getroffen wurde.', measure:'% mit Entscheidung', target:'≥ 90 %', freq:'Quartalsweise'},
+  {level:'Wirkung', color:'#E2001A', lcolor:'#E2001A',
+   name:'Time-to-Evaluation', desc:'Durchschnittliche Zeit von erster Technologie-Identifikation bis zur abgeschlossenen Bewertung nach Raster.', measure:'Tage', target:'≤ 30 Tage', freq:'Quartalsweise'},
+  {level:'Wirkung', color:'#E2001A', lcolor:'#E2001A',
+   name:'Human-AI Engineering Reifegrad', desc:'Fortschritt des Human-AI Engineering Programms auf einer 4-stufigen Skala: 1=Idee, 2=Pilotteam aktiv, 3=Tools etabliert & gemessen, 4=DA-weit skaliert.', measure:'Reifegrad 1–4', target:'Stufe 3 bis 2028', freq:'Halbjährlich'},
+  {level:'Wirkung', color:'#E2001A', lcolor:'#E2001A',
+   name:'Fachbereichs-Zufriedenheit', desc:'Bewertung der Fachbereiche Fire Alarm & Security und Health Care: Ist das TIO ein nützlicher Innovationspartner? (1–5 Skala)', measure:'Ø Score 1–5', target:'≥ 4,0', freq:'Halbjährlich'},
+  {level:'Wirkung', color:'#E2001A', lcolor:'#E2001A',
+   name:'Technologien in Roadmap überführt', desc:'Anteil positiv bewerteter Technologien, die innerhalb von 12 Monaten in eine Produkt- oder Prozess-Roadmap aufgenommen wurden.', measure:'% in Roadmap', target:'≥ 50 %', freq:'Jährlich'},
+  {level:'Wirkung', color:'#E2001A', lcolor:'#E2001A',
+   name:'Förderquote am Innovationsbudget', desc:'Anteil des Innovationsbudgets, der durch externe Förderungen ko-finanziert wird.', measure:'% Förderanteil', target:'≥ 15 %', freq:'Jährlich'},
+  {level:'Ergebnis', color:'#2E7D32', lcolor:'#2E7D32',
+   name:'Radar-Score Gesamt (Ø)', desc:'Durchschnittlicher Selbstbewertungs-Score über alle 10 Dimensionen des Technologieführerschafts-Radars. Baseline heute: Ø 2,5 / 5.', measure:'Ø Score 1–5', target:'≥ 3,5 / 5', freq:'Jährlich'},
+  {level:'Ergebnis', color:'#2E7D32', lcolor:'#2E7D32',
+   name:'Technologien produktiv in Betrieb', desc:'Anzahl durch TIO initiierter Technologien, die vom PoC in produktiven Einsatz in Produkten oder Prozessen überführt wurden.', measure:'Anzahl live', target:'≥ 3 bis 2028', freq:'Jährlich'},
+  {level:'Ergebnis', color:'#2E7D32', lcolor:'#2E7D32',
+   name:'Gruppenweite Technologie-Nutzung', desc:'Anzahl Securitas-Gruppengesellschaften, die eine durch TIO bewertete und freigegebene Technologie oder Plattformlösung aktiv nutzen.', measure:'Gesellschaften', target:'≥ 2 bis 2028', freq:'Jährlich'},
+  {level:'Ergebnis', color:'#2E7D32', lcolor:'#2E7D32',
+   name:'Innovations-Sichtbarkeit extern', desc:'Anzahl externer Auftritte (Konferenzen, Publikationen, Awards) bei denen Schrack Seconet als Technologieführer wahrgenommen wird.', measure:'Externe Auftritte / Jahr', target:'≥ 2 / Jahr', freq:'Jährlich'},
+];
+
+
+// ── KPI Ist-Stand state ────────────────────────────────────────────────────
+let kpiIst = KPIS.map(() => '');
+
+function deltaInfo(target, ist) {
+  if (!ist || ist.trim() === '') return {cls:'neu', label:'Kein Ist-Wert'};
+  // Extract numbers from target and ist
+  const tNums = (target.match(/[\d.,]+/g)||[]).map(n=>parseFloat(n.replace(',','.')));
+  const iNums = (ist.match(/[\d.,]+/g)||[]).map(n=>parseFloat(n.replace(',','.')));
+  if (!tNums.length || !iNums.length) return {cls:'neu', label:ist};
+  const t = tNums[0], iv = iNums[0];
+  // Detect direction: ≤ means lower is better, ≥ means higher is better
+  const wantLow = target.includes('≤');
+  const ok = wantLow ? iv <= t : iv >= t;
+  const diff = iv - t;
+  const sign = diff > 0 ? '+' : '';
+  return {cls: ok ? 'ok' : 'warn', label: ok ? '✓ Ziel erreicht' : `${sign}${diff.toFixed(1)} zum Ziel`};
+}
+
+function buildKPI(){
+  const grid = document.getElementById('kpi-grid');
+  grid.innerHTML = KPIS.map((k,i)=>{
+    const d = deltaInfo(k.target, kpiIst[i]);
+    return `
+    <div class="kpi-card" style="border-top-color:${k.color}">
+      <div class="kpi-card-level" style="color:${k.color}">${k.level}</div>
+      <div class="kpi-card-name">${k.name}</div>
+      <div class="kpi-card-desc">${k.desc}</div>
+      <div class="kpi-card-footer">
+        <span class="kpi-target" style="color:${k.color}">${k.target}</span>
+        <span class="kpi-freq">${k.freq}</span>
+      </div>
+      <div class="kpi-card-ist">
+        <div class="kpi-ist-row">
+          <span class="kpi-ist-label">Ist-Stand:</span>
+          <input class="kpi-ist-input" id="ist-${i}" type="text" placeholder="Aktuellen Wert eintragen…" value="${kpiIst[i]}"
+            oninput="updateIst(${i},this.value)">
+          <span class="kpi-delta ${d.cls}">${d.label}</span>
+        </div>
+      </div>
+    </div>`;}).join('');
+
+  document.getElementById('kpi-table-body').innerHTML = KPIS.map((k,i)=>{
+    const d = deltaInfo(k.target, kpiIst[i]);
+    return `
+    <tr>
+      <td><span class="kpi-level-badge"><span class="kpi-level-dot" style="background:${k.lcolor}"></span>${k.level}</span></td>
+      <td style="font-weight:500;color:var(--navy)">${k.name}</td>
+      <td style="color:var(--ink-mid);font-size:12px">${k.measure}</td>
+      <td class="kpi-target-cell" style="color:${k.color}">${k.target}</td>
+      <td><input class="kpi-tbl-ist" type="text" placeholder="Ist…" value="${kpiIst[i]}" oninput="updateIst(${i},this.value)"></td>
+      <td><span class="delta-cell ${d.cls}">${d.label}</span></td>
+      <td style="color:var(--ink-light);font-size:12px">${k.freq}</td>
+    </tr>`;}).join('');
+}
+
+function updateIst(i, val) {
+  kpiIst[i] = val;
+  markUnsaved();
+  // Update delta in card and table simultaneously
+  const d = deltaInfo(KPIS[i].target, val);
+  // card delta
+  const cardDelta = document.querySelector(`#ist-${i}`)?.closest('.kpi-card')?.querySelector('.kpi-delta');
+  if (cardDelta) { cardDelta.className='kpi-delta '+d.cls; cardDelta.textContent=d.label; }
+  // sync table input
+  const tblInput = document.querySelector(`.kpi-tbl-ist[oninput="updateIst(${i},this.value)"]`);
+  if (tblInput && tblInput.value !== val) tblInput.value = val;
+  // sync card input
+  const cardInput = document.getElementById('ist-'+i);
+  if (cardInput && cardInput.value !== val) cardInput.value = val;
+  // table delta
+  const row = document.querySelectorAll('#kpi-table-body tr')[i];
+  if (row) { const dc = row.querySelector('.delta-cell'); if(dc){dc.className='delta-cell '+d.cls;dc.textContent=d.label;} }
+}
+
+// ── Persistence ────────────────────────────────────────────────────────────
+const STORAGE_KEY = 'tio_technologiefuehrerschaft_v1';
+
+function getState() {
+  return {
+    scores: scores,
+    strengths: DIMS.map(d => d.strengths),
+    gaps: DIMS.map(d => d.gaps),
+    kpiIst: kpiIst,
+    savedAt: new Date().toISOString()
+  };
+}
+
+function applyState(s) {
+  if (!s) return;
+  if (s.scores) scores = s.scores;
+  if (s.strengths) s.strengths.forEach((arr,i) => { if(DIMS[i]) DIMS[i].strengths = arr; });
+  if (s.gaps) s.gaps.forEach((arr,i) => { if(DIMS[i]) DIMS[i].gaps = arr; });
+  if (s.kpiIst) kpiIst = s.kpiIst;
+}
+
+function saveData() {
+  const state = getState();
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    document.getElementById('persist-status').textContent = 'Gespeichert';
+    document.getElementById('persist-status').className = 'persist-status saved';
+    document.getElementById('persist-saved-at').textContent =
+      'Zuletzt: ' + new Date().toLocaleString('de-AT', {day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+  } catch(e) { alert('Speichern fehlgeschlagen: ' + e.message); }
+}
+
+function markUnsaved() {
+  const el = document.getElementById('persist-status');
+  if (el.textContent !== 'Ungespeicherte Änderungen') {
+    el.textContent = 'Ungespeicherte Änderungen';
+    el.className = 'persist-status unsaved';
+  }
+}
+
+function resetData() {
+  if (!confirm('Alle Änderungen zurücksetzen und gespeicherten Stand löschen?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  location.reload();
+}
+
+function exportData() {
+  const blob = new Blob([JSON.stringify(getState(), null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'tio_technologiefuehrerschaft_' + new Date().toISOString().slice(0,10) + '.json';
+  a.click();
+}
+
+function loadFromStorage() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return false;
+    const s = JSON.parse(raw);
+    applyState(s);
+    if (s.savedAt) {
+      const d = new Date(s.savedAt);
+      document.getElementById('persist-saved-at').textContent =
+        'Zuletzt: ' + d.toLocaleString('de-AT', {day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+      document.getElementById('persist-status').textContent = 'Stand geladen';
+      document.getElementById('persist-status').className = 'persist-status saved';
+    }
+    return true;
+  } catch(e) { return false; }
+}
+
+// patch CRUD to mark unsaved on every mutation
+const _origDelete = deleteItem;
+const _origSave = saveItem;
+const _origAdd = addItem;
+const _origUpdate = updateScore;
+window.deleteItem = function(a,b,c){ _origDelete(a,b,c); markUnsaved(); };
+window.saveItem   = function(a,b,c){ _origSave(a,b,c);   markUnsaved(); };
+window.addItem    = function(a,b){   _origAdd(a,b);       markUnsaved(); };
+window.updateScore= function(a,b){   _origUpdate(a,b);    markUnsaved(); };
+
+// ── KPI table needs extra column header ────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {});
+
+// ── Boot ───────────────────────────────────────────────────────────────────
+loadFromStorage();
+drawRadar(); drawLegend(); buildMatrix(); buildRoadmap(); buildCompare(); buildPrinciples(); buildRoles(); buildKPI();
+</script>
+</body>
+</html>
