@@ -1149,7 +1149,18 @@ window.updateScore= function(a,b){   _origUpdate(a,b);    markUnsaved(); };
 document.addEventListener('DOMContentLoaded', () => {});
 
 // ── Boot ───────────────────────────────────────────────────────────────────
-loadFromStorage();
+async function loadFromRepo() {
+  try {
+    const res = await fetch('./data/state.json?_=' + Date.now());
+    if (!res.ok) return;
+    const state = await res.json();
+    applyState(state);
+  } catch (e) {
+    console.warn('Kein state.json geladen');
+  }
+}
+//loadFromStorage();
+await loadFromRepo();
 drawRadar(); drawLegend(); buildMatrix(); buildRoadmap(); buildCompare(); buildPrinciples(); buildRoles(); buildKPI();
 </script>
 </body>
