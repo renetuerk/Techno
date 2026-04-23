@@ -1,0 +1,39 @@
+content:
+  - name: Technologieführerschaft Radar
+    type: file
+    path: data/state.json
+
+    fields:
+      - name: savedAt
+        label: Letzte Änderung
+        type: datetime
+
+      - name: scores
+        label: Radar Scores
+        type: list
+        field:
+          type: number
+          min: 1
+          max: 5
+
+      - name: strengths
+        label: Stärken je Dimension
+        type: list
+        field:
+          type: list
+          field:
+            type: text
+
+      - name: gaps
+        label: Lücken je Dimension
+        type: list
+        field:
+          type: list
+          field:
+            type: text
+
+      - name: kpiIst
+        label: KPI Ist-Stände
+        type: list
+        field:
+          type: text
