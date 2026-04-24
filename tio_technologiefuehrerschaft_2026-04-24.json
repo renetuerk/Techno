@@ -1,0 +1,138 @@
+{
+  "scores": [
+    3,
+    3,
+    2,
+    2,
+    2,
+    3,
+    2,
+    4,
+    1,
+    1
+  ],
+  "strengths": [
+    [
+      "Produktstrategie und Konvergenzdenken vorhanden",
+      "Marktbeobachtung in Teilen etabliert",
+      "Klare strategische Stoßrichtung UB A&S 2027–31",
+      "SECO Unternehmensstrategie vorhanden"
+    ],
+    [
+      "Tiefes Domänenwissen Brandmelde/BMS",
+      "Produktgenerationen mit klarer Roadmap",
+      "Normenkonforme Entwicklungsprozesse etabliert"
+    ],
+    [
+      "Agile Methoden (SAFe) etabliert",
+      "Plattformdenken vorhanden",
+      "Entwicklungsprozess strukturiert und dokumentiert"
+    ],
+    [
+      "Breite Servicebasis als Datenpotenzial",
+      "Direkter Kundenzugang für Technologie-Feedback",
+      "Remote-Service als Wachstumsfeld erkannt"
+    ],
+    [
+      "Umfangreiche Felddaten aus installierter Basis",
+      "Lifecycle-Mehrwert als strategisches Ziel",
+      "KI-Assistenz im Roadmap-Horizont"
+    ],
+    [
+      "Starke Marktposition DACH",
+      "Bekannter Markenname in Sicherheitstechnik",
+      "Technologie als USP im Vertrieb kommunizierbar"
+    ],
+    [
+      "Peer-to-Peer Services zwischen Gesellschaften angedacht",
+      "Gemeinsame strategische Richtung vorhanden",
+      "Zugang zu Securitas-Technologieportfolio"
+    ],
+    [
+      "Tiefes Normenwissen vorhanden (EN 54, VdS etc.)",
+      "Security by Design als Prinzip",
+      "Zertifizierungsprozesse etabliert"
+    ],
+    [
+      "Grundsätzliches Bewusstsein für Förderkulisse vorhanden",
+      "Vereinzelte Projekte wurden gefördert"
+    ],
+    [
+      "Offenheit für externe Impulse vorhanden",
+      "Einzelne Hochschulkontakte bestehen"
+    ]
+  ],
+  "gaps": [
+    [
+      "Kein formaler unternehmensweiter Technologie-Radar",
+      "Bewertung noch projektgetrieben, kein Rhythmus",
+      "Frühwarnsystem für disruptive Marktveränderungen fehlt"
+    ],
+    [
+      "Hardwarezyklen zu lang für schnelle Technologieintegration",
+      "Trennung Hardware/Software verlangsamt digitale Innovation",
+      "Neue Sensorik/Edge-Technologien noch nicht systematisch evaluiert"
+    ],
+    [
+      "Plattform noch kein Plug-in-fähiger Innovationskanal",
+      "KI-Integration noch im PoC-Stadium",
+      "PoC-Prozess nicht standardisiert",
+      "Human-AI Engineering erst als Idee vorhanden — kein operatives Programm"
+    ],
+    [
+      "Service-Prozesse noch wenig digitalisiert",
+      "KI-gestützte Diagnose und Predictive Maintenance fehlen",
+      "Rückkopplung Felddaten → Produktentwicklung nicht strukturiert"
+    ],
+    [
+      "Durchgängige Datenarchitektur fehlt",
+      "Analytics über Gewerke und Länder nicht operativ",
+      "Datenpotenzial der Gruppe noch kaum erschlossen"
+    ],
+    [
+      "Wettbewerber holen bei digitalen Services auf",
+      "Technologieführerschaft noch nicht als Marktversprechen positioniert",
+      "Eco-System-Partnerschaften für Technologie-Differenzierung fehlen"
+    ],
+    [
+      "Technologie-Konvergenz Brandmelde/BMS/Security noch nicht operativ",
+      "Länderübergreifende Plattform-Nutzung minimal",
+      "Gruppenweiter Technologie-Radar fehlt"
+    ],
+    [
+      "Compliance-Prüfung kommt oft zu spät im Prozess",
+      "NIS2 als neue Variable noch nicht vollständig integriert",
+      "Automatisierter Normen-Scan im Bewertungsprozess fehlt"
+    ],
+    [
+      "Kein systematischer Überblick über relevante Programme (FFG, Horizon, aws, Digitalbonus AT)",
+      "Keine dedizierte Verantwortlichkeit für Förder-Scouting und Antragstellung",
+      "Förderlogik wird nicht standardmäßig in Projektplanung integriert",
+      "Erfahrung mit EU-Konsortialförderungen fehlt"
+    ],
+    [
+      "Kein strukturierter Zugang zu Startup-Hubs oder Acceleratoren",
+      "Startup-Scouting nicht als Frühwarnsystem etabliert",
+      "Keine systematischen Hochschul- oder Forschungspartnerschaften",
+      "Startups werden nicht als PoC-Partner oder Förderpartner genutzt"
+    ]
+  ],
+  "kpiIst": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
+  "savedAt": "2026-04-24T08:22:04.712Z"
+}
