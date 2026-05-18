@@ -275,11 +275,78 @@ body { font-family: 'Inter', sans-serif; background: var(--surface); color: var(
 .footer-brand { font-size: 12px; color: var(--ink-light); }
 .footer-brand strong { color: var(--navy); font-weight: 700; font-family: 'Inter Tight', sans-serif; letter-spacing: -.2px; }
 .footer-date { font-family: 'Inter Tight', sans-serif; font-size: 11px; color: var(--ink-light); font-weight: 500; }
+
+/* ── PDF / Print ──────────────────────────────────────────────────────── */
+@media print {
+  /* Hide everything except active view */
+  .persist-bar,
+  .scope-banner,
+  .tabs,
+  .page-footer,
+  .crud-btn,
+  .crud-add-row,
+  .slider-row,
+  .kpi-ist-row,
+  .kpi-ist-input,
+  .kpi-table td input { display: none !important; }
+
+  /* Reset sticky/overflow for print */
+  body { background: white !important; }
+  .main { padding: .5rem 1rem !important; max-width: 100% !important; }
+
+  /* Page header compact */
+  .page-header {
+    padding: .75rem 1.5rem !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .ph-deco1, .ph-deco2 { display: none !important; }
+
+  /* Hide all inactive views */
+  .view { display: none !important; }
+  .view.active { display: block !important; }
+
+  /* Page breaks */
+  .phase-card,
+  .principle-card,
+  .kpi-card { break-inside: avoid; }
+
+  /* Force colors */
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+  /* Radar SVG full width */
+  .radar-layout { display: block !important; }
+  .radar-card svg { width: 280px !important; }
+
+  /* Print page margins */
+  @page {
+    size: A4 landscape;
+    margin: 10mm 12mm;
+  }
+
+  /* Print title */
+  .print-title {
+    display: block !important;
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 11px;
+    color: var(--navy);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: .75rem;
+    padding-bottom: .5rem;
+    border-bottom: 2px solid var(--red);
+  }
+}
+
+@media screen {
+  .print-title { display: none; }
+}
 </style>
 </head>
 <body>
 
-<div class="persist-bar" id="persist-bar"><span class="persist-status" id="persist-status">Nicht gespeichert</span><span class="persist-saved-at" id="persist-saved-at"></span><button class="persist-btn export" onclick="exportData()">Export JSON</button><button class="persist-btn reset" onclick="resetData()">Zurücksetzen</button><button class="persist-btn save" onclick="saveData()">💾 Speichern</button></div>
+<div class="persist-bar" id="persist-bar"><span class="persist-status" id="persist-status">Nicht gespeichert</span><span class="persist-saved-at" id="persist-saved-at"></span><button class="persist-btn export" onclick="exportData()">Export JSON</button><button class="persist-btn pdf" onclick="printView()" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)">🖨 Als PDF</button><button class="persist-btn reset" onclick="resetData()">Zurücksetzen</button><button class="persist-btn save" onclick="saveData()">💾 Speichern</button></div>
 <div class="page-header">
   <div class="ph-redbar"></div>
   <div class="ph-deco1"></div><div class="ph-deco2"></div>
@@ -349,6 +416,7 @@ body { font-family: 'Inter', sans-serif; background: var(--surface); color: var(
 
   <!-- RADAR -->
   <div id="view-radar" class="view active">
+  <div class="print-title">Radar &amp; Bewertung — PM/KPZ Fire Safety &amp; Security · TIO</div>
     <div class="radar-layout">
       <div>
         <div class="radar-card">
@@ -365,6 +433,7 @@ body { font-family: 'Inter', sans-serif; background: var(--surface); color: var(
 
   <!-- MATRIX -->
   <div id="view-matrix" class="view">
+  <div class="print-title">Technologie-Bewertungsraster — PM/KPZ Fire Safety &amp; Security · TIO</div>
     <p class="matrix-intro">Jede neue Technologie — ob für Produkte, Service, Vertrieb oder interne Prozesse — wird gegen diese sechs Kriterien bewertet, bevor eine Einführungs- oder Investitionsentscheidung getroffen wird. Das Raster gilt unternehmensübergreifend.</p>
     <div class="matrix-card">
       <table class="matrix-table">
@@ -385,11 +454,13 @@ body { font-family: 'Inter', sans-serif; background: var(--surface); color: var(
 
   <!-- ROADMAP -->
   <div id="view-roadmap" class="view">
+  <div class="print-title">Initiativen-Roadmap 2027–2032 — PM/KPZ Fire Safety &amp; Security · TIO</div>
     <div class="roadmap" id="roadmap"></div>
   </div>
 
   <!-- COMPARE -->
   <div id="view-compare" class="view">
+  <div class="print-title">Vergleich &amp; Scope — PM/KPZ Fire Safety &amp; Security · TIO</div>
     <p class="compare-intro">Die DA-Version fokussiert auf Softwareentwicklung und digitale Produkte. Die Gesamtversion erweitert den Blick auf Hardware, Markt, Gruppe und physische Serviceprozesse — und fügt zwei neue Dimensionen hinzu.</p>
     <div class="compare-grid" id="compare-grid"></div>
     <div class="shared-banner">
@@ -400,12 +471,14 @@ body { font-family: 'Inter', sans-serif; background: var(--surface); color: var(
 
   <!-- PRINCIPLES -->
   <div id="view-principles" class="view">
+  <div class="print-title">Führungsprinzipien — PM/KPZ Fire Safety &amp; Security · TIO</div>
     <p class="principles-intro">Sieben Führungsprinzipien, die als Entscheidungsfilter dienen — für alle Bereiche der Organisation gleichermaßen verbindlich.</p>
     <div class="principles-grid" id="principles"></div>
   </div>
 
   <!-- TIO -->
   <div id="view-tio" class="view">
+  <div class="print-title">Technology &amp; Innovation Office — Organisation &amp; Mission</div>
     <div class="tio-intro">
       <div class="tio-name-block">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;flex-wrap:wrap">
@@ -563,6 +636,7 @@ body { font-family: 'Inter', sans-serif; background: var(--surface); color: var(
 
   <!-- KPI -->
   <div id="view-kpi" class="view">
+  <div class="print-title">TIO KPI-Set — PM/KPZ Fire Safety &amp; Security</div>
     <div class="kpi-intro-row">
       <div class="kpi-intro-text">
         <p>Das KPI-Set misst den Erfolg des TIO auf drei Ebenen: <strong>Aktivität</strong> (tun wir das Richtige?), <strong>Wirkung</strong> (verändert es etwas?) und <strong>Ergebnis</strong> (zahlt es auf Technologieführerschaft ein?). Zielwerte sind für das Ende von Phase 1 gesetzt (2028).</p>
@@ -1168,6 +1242,30 @@ document.addEventListener('DOMContentLoaded', () => {});
 // ── Boot ───────────────────────────────────────────────────────────────────
 loadFromStorage();
 drawRadar(); drawLegend(); buildMatrix(); buildRoadmap(); buildCompare(); buildPrinciples(); buildRoles(); buildKPI();
+
+// ── PDF Print ─────────────────────────────────────────────────────────────
+const VIEW_NAMES = {
+  'radar':      'TIO_Radar_Bewertung',
+  'matrix':     'TIO_Bewertungsraster',
+  'roadmap':    'TIO_Initiativen_Roadmap',
+  'compare':    'TIO_Vergleich',
+  'principles': 'TIO_Fuehrungsprinzipien',
+  'tio':        'TIO_Organisation_Mission',
+  'kpi':        'TIO_KPI_Set',
+};
+
+function printView() {
+  // Find active view
+  const activeView = document.querySelector('.view.active');
+  const viewId = activeView ? activeView.id.replace('view-', '') : 'export';
+  const docTitle = document.title;
+  // Set document title to trigger filename suggestion in browser print dialog
+  document.title = VIEW_NAMES[viewId] || 'TIO_Export';
+  window.print();
+  // Restore title
+  setTimeout(() => { document.title = docTitle; }, 1000);
+}
+
 </script>
 </body>
 </html>
