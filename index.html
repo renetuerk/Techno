@@ -342,6 +342,61 @@ body { font-family: 'Inter', sans-serif; background: var(--surface); color: var(
 @media screen {
   .print-title { display: none; }
 }
+
+/* ── TIO Technologie-Radar ─────────────────────────────────────────── */
+.tr-header { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; margin-bottom:1.5rem; flex-wrap:wrap; }
+.tr-intro { font-size:14px; color:var(--ink-mid); line-height:1.7; max-width:580px; }
+.tr-actions { display:flex; gap:8px; flex-shrink:0; }
+.tr-btn { padding:7px 16px; border-radius:var(--radius); border:1px solid var(--border-strong); background:var(--white); font-family:'Inter',sans-serif; font-size:13px; color:var(--ink-mid); cursor:pointer; transition:all .15s; font-weight:500; }
+.tr-btn.primary { background:var(--navy); color:white; border-color:var(--navy); }
+.tr-btn.primary:hover { background:var(--navy-mid); }
+.tr-btn:hover { background:var(--surface2); color:var(--ink); }
+.tr-filter-row { display:flex; gap:8px; margin-bottom:1.25rem; flex-wrap:wrap; }
+.tr-filter { padding:4px 14px; border-radius:20px; border:1px solid var(--border); background:transparent; font-family:'Inter',sans-serif; font-size:12px; color:var(--ink-light); cursor:pointer; transition:all .15s; }
+.tr-filter.active { background:var(--navy); color:white; border-color:var(--navy); font-weight:600; }
+.tr-cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:1.25rem; }
+.tr-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; transition:box-shadow .2s,transform .15s; display:flex; flex-direction:column; }
+.tr-card:hover { box-shadow:0 4px 20px rgba(0,38,77,.09); transform:translateY(-2px); }
+.tr-card-top { padding:1.1rem 1.25rem .9rem; border-bottom:1px solid var(--border); }
+.tr-card-head { display:flex; align-items:flex-start; justify-content:space-between; gap:.75rem; margin-bottom:.5rem; }
+.tr-card-title { font-size:14px; font-weight:700; color:var(--navy); font-family:'Inter Tight',sans-serif; line-height:1.3; }
+.tr-status-pill { font-size:10px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; padding:3px 10px; border-radius:20px; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.tr-card-desc { font-size:12.5px; color:var(--ink-mid); line-height:1.6; margin-bottom:.75rem; }
+.tr-meta { display:flex; gap:6px; flex-wrap:wrap; }
+.tr-meta-pill { font-size:11px; background:var(--surface2); color:var(--ink-mid); padding:2px 9px; border-radius:4px; font-weight:500; }
+.tr-card-body { padding:.9rem 1.25rem; flex:1; }
+.tr-crits { display:flex; flex-direction:column; gap:7px; }
+.tr-crit-row { display:flex; align-items:center; gap:10px; }
+.tr-crit-name { font-size:11.5px; color:var(--ink-light); width:120px; flex-shrink:0; }
+.tr-crit-bar-bg { flex:1; height:5px; border-radius:3px; background:var(--surface2); overflow:hidden; }
+.tr-crit-bar { height:5px; border-radius:3px; transition:width .4s ease; }
+.tr-crit-val { font-size:11px; font-weight:700; width:18px; text-align:right; }
+.tr-card-footer { padding:.85rem 1.25rem; border-top:1px solid var(--border); display:flex; align-items:flex-start; justify-content:space-between; gap:.75rem; background:var(--surface); }
+.tr-verdict { font-size:11.5px; color:var(--ink-mid); flex:1; line-height:1.55; }
+.tr-card-bottom { display:flex; flex-direction:column; align-items:flex-end; gap:6px; flex-shrink:0; }
+.tr-overall { display:flex; align-items:baseline; gap:2px; }
+.tr-overall-score { font-family:'Inter Tight',sans-serif; font-size:18px; font-weight:700; line-height:1; }
+.tr-overall-label { font-size:11px; color:var(--ink-light); }
+.tr-card-actions { display:flex; gap:4px; }
+.tr-icon-btn { background:transparent; border:1px solid var(--border); cursor:pointer; font-size:12px; padding:4px 8px; border-radius:var(--radius); color:var(--ink-light); transition:all .15s; font-family:inherit; }
+.tr-icon-btn:hover { background:var(--surface2); color:var(--ink); border-color:var(--border-strong); }
+.tr-icon-btn.del:hover { background:#fdecea; color:var(--red); border-color:var(--red); }
+.tr-empty { text-align:center; padding:3rem 1rem; color:var(--ink-light); font-size:14px; background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); }
+/* Modal overlay */
+.tr-modal-bg { display:none; position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:9999; align-items:center; justify-content:center; padding:1rem; }
+.tr-modal-bg.open { display:flex !important; }
+.tr-modal { background:var(--white); border-radius:var(--radius-lg); padding:1.75rem; width:100%; max-width:560px; max-height:90vh; overflow-y:auto; box-shadow:0 24px 64px rgba(0,0,0,.22); }
+.tr-modal h3 { font-size:17px; font-weight:700; color:var(--navy); margin-bottom:1.25rem; font-family:'Inter Tight',sans-serif; }
+.tr-field { margin-bottom:1rem; }
+.tr-field > label { display:block; font-size:11px; font-weight:700; color:var(--ink-mid); margin-bottom:5px; text-transform:uppercase; letter-spacing:.6px; }
+.tr-field input[type=text], .tr-field input[type=number], .tr-field textarea, .tr-field select { width:100%; font-family:'Inter',sans-serif; font-size:13px; padding:8px 11px; border:1px solid var(--border-strong); border-radius:var(--radius); background:var(--surface); color:var(--ink); outline:none; transition:border-color .15s; }
+.tr-field input[type=text]:focus, .tr-field input[type=number]:focus, .tr-field textarea:focus, .tr-field select:focus { border-color:var(--navy); background:var(--white); box-shadow:0 0 0 3px rgba(0,38,77,.08); }
+.tr-field textarea { min-height:72px; resize:vertical; line-height:1.55; }
+.tr-score-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
+.tr-score-item label { display:block; font-size:11px; color:var(--ink-light); margin-bottom:4px; }
+.tr-score-item input { width:100%; text-align:center; font-weight:600; font-size:15px; padding:6px 4px; }
+.tr-modal-footer { display:flex; gap:8px; justify-content:flex-end; margin-top:1.5rem; padding-top:1.25rem; border-top:1px solid var(--border); }
+
 </style>
 </head>
 <body>
@@ -412,6 +467,7 @@ body { font-family: 'Inter', sans-serif; background: var(--surface); color: var(
     <button class="tab" onclick="showView('principles',event)">Führungsprinzipien</button>
     <button class="tab" onclick="showView('tio',event)">Technology &amp; Innovation Office</button>
     <button class="tab" onclick="showView('kpi',event)">TIO · KPI-Set</button>
+    <button class="tab" onclick="showView('tech-radar',event)">🔍 TIO Technologie-Radar</button>
   </div>
 
   <!-- RADAR -->
@@ -660,6 +716,55 @@ body { font-family: 'Inter', sans-serif; background: var(--surface); color: var(
       </div>
     </div>
   </div>
+  <!-- TECH RADAR -->
+  <div id="view-tech-radar" class="view">
+  <div class="print-title">TIO Technologie-Radar — PM/KPZ Fire Safety &amp; Security</div>
+    <div class="tr-header">
+      <p class="tr-intro">Bewertete Technologien nach dem 6-Kriterien-Raster. Jede Karte dokumentiert den Entscheidungsstand und die nächsten Schritte. Änderungen werden mit 💾 Speichern gesichert.</p>
+      <div class="tr-actions">
+        <button class="tr-btn primary" onclick="openTechModal()">+ Neue Technologie</button>
+      </div>
+    </div>
+    <div class="tr-filter-row" id="tr-filters"></div>
+    <div class="tr-cards" id="tr-cards"></div>
+
+    <!-- Modal -->
+    <div class="tr-modal-bg" id="tr-modal">
+      <div class="tr-modal">
+        <h3 id="modal-title">Neue Technologie bewerten</h3>
+        <div class="tr-field"><label>Technologie / Titel</label><input id="tr-f-title" placeholder="z.B. 5G & VPN-Migration für Remote Services"></div>
+        <div class="tr-field"><label>Kategorie</label>
+          <select id="tr-f-cat">
+            <option>Konnektivität</option><option>KI & Analytics</option><option>Sensorik & Hardware</option>
+            <option>Cloud & Plattform</option><option>Security & Normen</option><option>Service & Diagnose</option><option>Sonstiges</option>
+          </select>
+        </div>
+        <div class="tr-field"><label>Status</label>
+          <select id="tr-f-status">
+            <option>Beobachten</option><option>PoC geplant</option><option>PoC aktiv</option><option>Entschieden: Einführen</option><option>Entschieden: Nicht einführen</option>
+          </select>
+        </div>
+        <div class="tr-field"><label>Kurzbeschreibung</label><textarea id="tr-f-desc" placeholder="Worum geht es, was ist der aktuelle Kontext?"></textarea></div>
+        <div class="tr-field"><label>Gesamt-Einschätzung / Handlungsempfehlung</label><textarea id="tr-f-verdict" placeholder="Was empfehlen wir? Warum jetzt / nicht jetzt?"></textarea></div>
+        <div class="tr-field"><label>Phase / Zeitplan</label><input id="tr-f-phase" placeholder="z.B. PoC Q3 2026, Migration 2027–2028"></div>
+        <div class="tr-field"><label>Bewertung je Kriterium (1–5)</label>
+          <div class="tr-score-grid">
+            <div class="tr-score-item"><label>Marktreife</label><input type="number" id="s-markt" min="1" max="5" value="3"></div>
+            <div class="tr-score-item"><label>Differenzierung</label><input type="number" id="s-diff" min="1" max="5" value="3"></div>
+            <div class="tr-score-item"><label>Integration</label><input type="number" id="s-int" min="1" max="5" value="3"></div>
+            <div class="tr-score-item"><label>Normen</label><input type="number" id="s-norm" min="1" max="5" value="3"></div>
+            <div class="tr-score-item"><label>Organisation</label><input type="number" id="s-org" min="1" max="5" value="3"></div>
+            <div class="tr-score-item"><label>Daten & KI</label><input type="number" id="s-data" min="1" max="5" value="3"></div>
+          </div>
+        </div>
+        <div class="tr-modal-footer">
+          <button class="tr-btn" onclick="closeTechModal()">Abbrechen</button>
+          <button class="tr-btn primary" onclick="saveTechEntry()">Speichern</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <div class="page-footer">
@@ -1242,6 +1347,231 @@ document.addEventListener('DOMContentLoaded', () => {});
 // ── Boot ───────────────────────────────────────────────────────────────────
 loadFromStorage();
 drawRadar(); drawLegend(); buildMatrix(); buildRoadmap(); buildCompare(); buildPrinciples(); buildRoles(); buildKPI();
+
+
+// ── TIO Technologie-Radar ─────────────────────────────────────────────────
+let techEntries = [
+  {
+    id: 'te-001',
+    title: '5G & VPN-Migration für Remote Services',
+    cat: 'Konnektivität',
+    status: 'Beobachten',
+    desc: 'Aktuell betreiben wir Remote-Services (Integral Remote, S2service Connect) über LTE-Router mit IPSec-VPN. Mittelfristig Umstieg auf 5G notwendig — parallel muss die VPN-Plattform modernisiert werden.',
+    verdict: 'Kein akuter Handlungsdruck (LTE läuft bis mind. 2030), aber strategisch wichtig. VPN-Plattform ist der eigentliche Engpass und muss unabhängig von 5G adressiert werden. Empfehlung: Ist-Analyse 2026, PoC Q3 2026, Migrations-Roadmap 2027–2028.',
+    phase: 'Ist-Analyse Q1–Q2 2026 · PoC Q3 2026 · Migration 2027–2028',
+    scores: { markt:4, diff:3, int:2, norm:3, org:2, data:4 }
+  },
+  {
+    id: 'te-002',
+    title: 'Agentic AI für Support',
+    cat: 'KI & Analytics',
+    status: 'PoC geplant',
+    desc: 'KI-Agenten die Support-Prozesse im internen Kundendienst übernehmen: 1st-Level-Entlastung, 24/7-Verfügbarkeit, strukturierte Fehlerdiagnose, proaktive Wartungshinweise — auf Basis von Anlagendaten aus Integral und Service Plattform.',
+    verdict: 'Hohes Potenzial, aber normative Hürden zuerst klären. Einstieg mit risikoarmen Use-Cases (Informationsassistent, FAQ, Statusabfragen) — kein autonomer Anlageneingriff ohne Normenprüfung (EN 54, Haftung). Domänenspezifische KI-Kompetenz ist schwer nachzubauen und erzeugt strukturellen Vorsprung.',
+    phase: 'Use-Case-Kartierung Q2 2026 · PoC interner Support Q3 2026 · Rollout 2027–2028',
+    scores: { markt:4, diff:4, int:2, norm:2, org:3, data:3 }
+  },
+  {
+    id: 'te-003',
+    title: 'MarkLogic-Ablöse & Cloud-Architekturstrategie',
+    cat: 'Cloud & Plattform',
+    status: 'PoC aktiv',
+    desc: 'MarkLogic als proprietäre NoSQL-Plattform durch eine moderne Cloud-native Zielarchitektur ersetzen: PostgreSQL/TimescaleDB für relationale und Zeitreihendaten, MongoDB für flexible Dokumentenstrukturen (Anlagenkonfigurationen). Voraussetzung für SaaS-Skalierung, Aurora Portal und Subscription Business.',
+    verdict: 'Strategisch dringlichstes Vorhaben — MarkLogic ist aktiver Kostentreiber und verhindert SaaS-Skalierung. Evaluierung abgeschlossen (PostgreSQL/TimescaleDB + MongoDB empfohlen). Nächster Schritt: Architektur-Entscheidungs-Kickoff mit Ebcont. Kritischer Pfad: Entscheidung Q3 2026 → Migration 2027–2028 → MarkLogic-Abschaltung 2028/2029.',
+    phase: 'Kickoff Ebcont Q2–Q3 2026 · Migration 2027–2028 · Abschaltung 2028–2029',
+    scores: { markt:5, diff:4, int:2, norm:4, org:3, data:5 }
+  }
+];
+
+let editingTechId = null;
+let techFilter = 'Alle';
+
+const STATUS_COLORS = {
+  'Beobachten':                { bg:'#fff8e1', col:'#b45309' },
+  'PoC geplant':               { bg:'#e3f0ff', col:'#1255a0' },
+  'PoC aktiv':                 { bg:'#eeedfe', col:'#534AB7' },
+  'Entschieden: Einführen':    { bg:'#e8f5e9', col:'#2E7D32' },
+  'Entschieden: Nicht einführen': { bg:'#fdecea', col:'#E2001A' },
+};
+
+const CRIT_COLORS = ['#185FA5','#E2001A','#BA7517','#993C1D','#3B6D11','#534AB7'];
+const CRIT_NAMES = ['Marktreife','Differenzierung','Integration','Normen','Organisation','Daten & KI'];
+const CRIT_KEYS  = ['markt','diff','int','norm','org','data'];
+const scoreLabel = s => ['','Einstieg','Aufbau','Etabliert','Differenziert','Führend'][s] || '';
+
+function avgScore(scores) {
+  const vals = CRIT_KEYS.map(k => scores[k] || 3);
+  return (vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(1);
+}
+
+function renderTechFilters() {
+  const cats = ['Alle', ...new Set(techEntries.map(e => e.cat))];
+  const statuses = [...new Set(techEntries.map(e => e.status))];
+  const allFilters = ['Alle', ...new Set(techEntries.map(e => e.cat)), ...new Set(techEntries.map(e => e.status))];
+  const unique = ['Alle', ...new Set(techEntries.flatMap(e => [e.cat, e.status]))];
+  document.getElementById('tr-filters').innerHTML = unique.map(f =>
+    `<button class="tr-filter${techFilter===f?' active':''}" onclick="setTechFilter('${f}')">${f}</button>`
+  ).join('');
+}
+
+function setTechFilter(f) {
+  techFilter = f;
+  renderTechFilters();
+  renderTechCards();
+  markUnsaved();
+}
+
+function renderTechCards() {
+  const filtered = techFilter === 'Alle'
+    ? techEntries
+    : techEntries.filter(e => e.cat === techFilter || e.status === techFilter);
+
+  const el = document.getElementById('tr-cards');
+  if (!filtered.length) {
+    el.innerHTML = '<div class="tr-empty">Noch keine Technologien bewertet.<br>Klicke auf "+ Neue Technologie" um zu starten.</div>';
+    return;
+  }
+
+  el.innerHTML = filtered.map(e => {
+    const st = STATUS_COLORS[e.status] || { bg:'#f0f0f0', col:'#888' };
+    const avg = avgScore(e.scores);
+    const avgNum = parseFloat(avg);
+    const avgCol = avgNum >= 4 ? '#2E7D32' : avgNum >= 3 ? '#185FA5' : avgNum >= 2 ? '#BA7517' : '#E2001A';
+
+    return `
+    <div class="tr-card">
+      <div class="tr-card-top">
+        <div class="tr-card-head">
+          <div class="tr-card-title">${e.title}</div>
+          <span class="tr-status-pill" style="background:${st.bg};color:${st.col}">${e.status}</span>
+        </div>
+        <div class="tr-card-desc">${e.desc}</div>
+        <div class="tr-meta">
+          <span class="tr-meta-pill">📂 ${e.cat}</span>
+          <span class="tr-meta-pill">📅 ${e.phase}</span>
+        </div>
+      </div>
+      <div class="tr-card-body">
+        <div class="tr-crits">
+          ${CRIT_KEYS.map((k,i) => `
+            <div class="tr-crit-row">
+              <span class="tr-crit-name">${CRIT_NAMES[i]}</span>
+              <div class="tr-crit-bar-bg"><div class="tr-crit-bar" style="width:${(e.scores[k]||3)/5*100}%;background:${CRIT_COLORS[i]}"></div></div>
+              <span class="tr-crit-val" style="color:${CRIT_COLORS[i]}">${e.scores[k]||3}</span>
+            </div>`).join('')}
+        </div>
+      </div>
+      <div class="tr-card-footer">
+        <div class="tr-verdict">${e.verdict}</div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0">
+          <div class="tr-overall">
+            <span class="tr-overall-score" style="color:${avgCol}">Ø${avg}</span>
+            <span class="tr-overall-label">/5</span>
+          </div>
+          <div class="tr-card-actions">
+            <button class="tr-icon-btn" title="Bearbeiten" onclick="editTechEntry('${e.id}')">✏️</button>
+            <button class="tr-icon-btn del" title="Löschen" onclick="deleteTechEntry('${e.id}')">✕</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openTechModal(id) {
+  editingTechId = id || null;
+  const modal = document.getElementById('tr-modal');
+  document.getElementById('modal-title').textContent = id ? 'Technologie bearbeiten' : 'Neue Technologie bewerten';
+
+  if (id) {
+    const e = techEntries.find(t => t.id === id);
+    if (!e) return;
+    document.getElementById('tr-f-title').value  = e.title;
+    document.getElementById('tr-f-cat').value    = e.cat;
+    document.getElementById('tr-f-status').value = e.status;
+    document.getElementById('tr-f-desc').value   = e.desc;
+    document.getElementById('tr-f-verdict').value= e.verdict;
+    document.getElementById('tr-f-phase').value  = e.phase;
+    CRIT_KEYS.forEach((k,i) => {
+      document.getElementById(['s-markt','s-diff','s-int','s-norm','s-org','s-data'][i]).value = e.scores[k] || 3;
+    });
+  } else {
+    ['tr-f-title','tr-f-desc','tr-f-verdict','tr-f-phase'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('tr-f-cat').value = 'Konnektivität';
+    document.getElementById('tr-f-status').value = 'Beobachten';
+    ['s-markt','s-diff','s-int','s-norm','s-org','s-data'].forEach(id => document.getElementById(id).value = 3);
+  }
+  modal.classList.add('open');
+}
+
+function editTechEntry(id) { openTechModal(id); }
+
+function closeTechModal() {
+  document.getElementById('tr-modal').classList.remove('open');
+  editingTechId = null;
+}
+
+function saveTechEntry() {
+  const title   = document.getElementById('tr-f-title').value.trim();
+  if (!title) { alert('Bitte einen Titel eingeben.'); return; }
+
+  const entry = {
+    id:      editingTechId || ('te-' + Date.now()),
+    title,
+    cat:     document.getElementById('tr-f-cat').value,
+    status:  document.getElementById('tr-f-status').value,
+    desc:    document.getElementById('tr-f-desc').value.trim(),
+    verdict: document.getElementById('tr-f-verdict').value.trim(),
+    phase:   document.getElementById('tr-f-phase').value.trim(),
+    scores: {
+      markt: parseInt(document.getElementById('s-markt').value)||3,
+      diff:  parseInt(document.getElementById('s-diff').value)||3,
+      int:   parseInt(document.getElementById('s-int').value)||3,
+      norm:  parseInt(document.getElementById('s-norm').value)||3,
+      org:   parseInt(document.getElementById('s-org').value)||3,
+      data:  parseInt(document.getElementById('s-data').value)||3,
+    }
+  };
+
+  if (editingTechId) {
+    const idx = techEntries.findIndex(t => t.id === editingTechId);
+    if (idx !== -1) techEntries[idx] = entry;
+  } else {
+    techEntries.push(entry);
+  }
+
+  closeTechModal();
+  renderTechFilters();
+  renderTechCards();
+  markUnsaved();
+}
+
+function deleteTechEntry(id) {
+  if (!confirm('Eintrag löschen?')) return;
+  techEntries = techEntries.filter(t => t.id !== id);
+  renderTechFilters();
+  renderTechCards();
+  markUnsaved();
+}
+
+// ── Persist integration ───────────────────────────────────────────────────
+const _origGetState = getState;
+const _origApplyState = applyState;
+
+getState = function() {
+  const s = _origGetState();
+  s.techEntries = techEntries;
+  return s;
+};
+
+applyState = function(s) {
+  _origApplyState(s);
+  if (s.techEntries) techEntries = s.techEntries;
+};
+
+// Init
+renderTechFilters();
+renderTechCards();
 
 // ── PDF Print ─────────────────────────────────────────────────────────────
 const VIEW_NAMES = {
